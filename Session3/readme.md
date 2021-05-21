@@ -8,6 +8,8 @@ Assignment
 	2.and gives two outputs:
 		i. the "number" that was represented by the MNIST image, and
 		ii. the "sum" of this number with the random number that was generated and sent as the input to the network
+		
+![network](https://user-images.githubusercontent.com/84603388/119204883-4cc83180-bab4-11eb-8827-512642628da5.png)
 
   
 	3. you can mix fully connected layers and convolution layers
@@ -21,3 +23,12 @@ Assignment
 	6. must mention "what" results you finally got and how did you evaluate your results
 	7. must mention what loss function you picked and why!
 	8. training MUST happen on the GPU
+
+Architecture :
+
+
+![model_arch](https://user-images.githubusercontent.com/84603388/119204998-99137180-bab4-11eb-9242-b2cfe80613fa.png)
+
+
+Final output:
+![output](https://user-images.githubusercontent.com/84603388/119204920-65d0e280-bab4-11eb-9efb-c1a305c68e75.png)
