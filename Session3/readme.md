@@ -3,11 +3,11 @@ Assignment
 
 1. Write a neural network that can:
 	1. take 2 inputs:
-		i. an image from MNIST dataset, and
-		ii. a random number between 0 and 9
+		1. an image from MNIST dataset, and
+		2. a random number between 0 and 9
 	2.and gives two outputs:
-		i. the "number" that was represented by the MNIST image, and
-		ii. the "sum" of this number with the random number that was generated and sent as the input to the network
+		1. the "number" that was represented by the MNIST image, and
+		2. the "sum" of this number with the random number that was generated and sent as the input to the network
 		
 ![network](https://user-images.githubusercontent.com/84603388/119204883-4cc83180-bab4-11eb-8827-512642628da5.png)
 
