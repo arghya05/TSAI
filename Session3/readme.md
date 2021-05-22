@@ -24,10 +24,14 @@ Assignment
 	7. must mention what loss function you picked and why!
 	8. training MUST happen on the GPU
 
-Architecture :
+Architecture:
 
 
 ![model_arch](https://user-images.githubusercontent.com/84603388/119204998-99137180-bab4-11eb-9242-b2cfe80613fa.png)
+
+Trainig log file:
+
+![Screenshot (225)](https://user-images.githubusercontent.com/84603388/119217911-1366e480-bafb-11eb-9816-637a9789ddfa.png)
 
 
 Final output:
