@@ -1,6 +1,6 @@
 # Neural Network BackPropagation using Excel
 
-## Link to Excel Sheet - https://github.com/vivek-a81/EVA6/blob/main/Session%204/Part-1/Mathematics%20behind%20Backpropogation.xlsx
+ [Link to Excel Sheet](https://github.com/vivek-a81/EVA6/blob/main/Session%204/Part-1/Mathematics%20behind%20Backpropogation.xlsx)
 
 Backpropagation is a commonly used method for training a neural network. The goal of backpropagation is to optimize the weights of the network so the neural network can learn how to correctly map the input and output attributes. The excel sheet helps to understand backpropagation correctly. Here, we’re going to use a neural network with two inputs, two hidden neurons, two output neurons and we are ignoring the bias.
 
