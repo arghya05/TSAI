@@ -4,7 +4,8 @@
 
 Backpropagation is a commonly used method for training a neural network. The goal of backpropagation is to optimize the weights of the network so the neural network can learn how to correctly map the input and output attributes. The excel sheet helps to understand backpropagation correctly. Here, we’re going to use a neural network with two inputs, two hidden neurons, two output neurons and we are ignoring the bias.
 
-<img src="https://user-images.githubusercontent.com/32029699/119680995-4db7e500-be5f-11eb-9155-0776e889dc24.PNG" width="600">
+![w10 15](https://user-images.githubusercontent.com/84603388/120035598-7fc27600-c01c-11eb-8afd-ef9f49a8bcdb.png)
+
 
 Here are the initial weights, for us to work with:
 
