@@ -55,7 +55,7 @@ Partial derivative of E_total with respect to w5, w6, w7, and w8
 
 The same goes for w2, w3, and w4
                  
-    
+    δE_total/δw1 = ((a_o1 - t1) * a_o1 * (1 - a_o1 ) * w5 + (a_o2 - t2) * a_o2 * (1 - a_o2 ) * w7) * a_h1 * (1- a_h1) * i1
     δE_total/δw2 = ((a_o1 - t1) * a_o1 * (1 - a_o1 ) * w5 + (a_o2 - t2) * a_o2 * (1 - a_o2 ) * w7) * a_h1 * (1- a_h1) * i2
     δE_total/δw3 = ((a_o1 - t1) * a_o1 * (1 - a_o1 ) * w6 + (a_o2 - t2) * a_o2 * (1 - a_o2 ) * w8) * a_h2 * (1- a_h2) * i1
     δE_total/δw4 = ((a_o1 - t1) * a_o1 * (1 - a_o1 ) * w6 + (a_o2 - t2) * a_o2 * (1 - a_o2 ) * w8) * a_h2 * (1- a_h2) * i2
@@ -69,13 +69,17 @@ The process is repeated until we get the minimum loss
 
 ## Error Graph for different Learning rates
 
-Link to Excel Sheet - https://github.com/gkdivya/EVA/blob/main/4_Backpropagation/FeedForwardNeuralNetwork.xlsx
+Link to Excel Sheet - https://github.com/vivek-a81/EVA6/blob/main/Session%204/Part-1/Mathematics%20behind%20Backpropogation.xlsx
+
 
 Below is the error graph when we change the learning rates 0.1, 0.2, 0.5, 0.8, 1.0, 2.0
 
-
-
-<img src="https://user-images.githubusercontent.com/42609155/119750792-a31fe080-beb7-11eb-948a-fe1f6d4c74c7.png" width="600">
+![Screenshot (260)](https://user-images.githubusercontent.com/84603388/120028491-6288aa00-c012-11eb-8d17-30fb8e960bea.png)
+![Screenshot (261)](https://user-images.githubusercontent.com/84603388/120028495-63b9d700-c012-11eb-9132-7773a659d704.png)
+![Screenshot (262)](https://user-images.githubusercontent.com/84603388/120028496-64526d80-c012-11eb-9e14-fa817cee3a0f.png)
+![Screenshot (263)](https://user-images.githubusercontent.com/84603388/120028498-64526d80-c012-11eb-9b69-f47d47e79d0a.png)
+![Screenshot (264)](https://user-images.githubusercontent.com/84603388/120028500-64eb0400-c012-11eb-8a66-e44af7bf43a5.png)
+![Screenshot (265)](https://user-images.githubusercontent.com/84603388/120028504-65839a80-c012-11eb-8a4a-e401d72a08bf.png)
 
 # Conclusion: The small learning rate takes a lot of time to find the optimum minimum value and the large learning rate takes a lot of jumps and gets stuck to find the minimum value. So, we should choose a moderate value for learning rate
 
