@@ -71,7 +71,6 @@ The process is repeated until we get the minimum loss
 
 Link to Excel Sheet - https://github.com/vivek-a81/EVA6/blob/main/Session%204/Part-1/Mathematics%20behind%20Backpropogation.xlsx
 
-
 Below is the error graph when we change the learning rates 0.1, 0.2, 0.5, 0.8, 1.0, 2.0
 
 ![Screenshot (268)](https://user-images.githubusercontent.com/84603388/120029044-2efa4f80-c013-11eb-8a7e-7740ec037c30.png)
