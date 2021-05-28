@@ -53,10 +53,11 @@ Write a network architecture in such a way:
           Dropout2d-29             [-1, 32, 6, 6]               0
           AvgPool2d-30             [-1, 32, 1, 1]               0
              Linear-31                   [-1, 10]             330
+  ```
   Total params: 17,266
   Trainable params: 17,266
   Non-trainable params: 0
-
+  ```
 
 ## Learning Curve:
 
@@ -67,7 +68,7 @@ Write a network architecture in such a way:
 ![output11](https://user-images.githubusercontent.com/84603388/120034196-5274c880-c01a-11eb-99e6-a3ee5ea2e62d.png)
 
 ## Training logs:
-
+```
   Epoch:1
   loss=0.0445 batch_id=468: 100%
   469/469 [04:49<00:00, 1.62it/s]
@@ -138,6 +139,6 @@ Write a network architecture in such a way:
   469/469 [00:14<00:00, 32.35it/s]
 
   Test set: Average loss: 0.0198, Accuracy: 9940/10000 (99.40%)
-
+```
 
  
