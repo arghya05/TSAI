@@ -73,13 +73,8 @@ Link to Excel Sheet - https://github.com/vivek-a81/EVA6/blob/main/Session%204/Pa
 
 Below is the error graph when we change the learning rates 0.1, 0.2, 0.5, 0.8, 1.0, 2.0
 
-![Screenshot (268)](https://user-images.githubusercontent.com/84603388/120029044-2efa4f80-c013-11eb-8a7e-7740ec037c30.png)
+![Screenshot (270)](https://user-images.githubusercontent.com/84603388/120029766-27877600-c014-11eb-9420-23c1748c5579.png)
 
-![Screenshot (261)](https://user-images.githubusercontent.com/84603388/120028495-63b9d700-c012-11eb-9132-7773a659d704.png)
-![Screenshot (262)](https://user-images.githubusercontent.com/84603388/120028496-64526d80-c012-11eb-9e14-fa817cee3a0f.png)
-![Screenshot (263)](https://user-images.githubusercontent.com/84603388/120028498-64526d80-c012-11eb-9b69-f47d47e79d0a.png)
-![Screenshot (264)](https://user-images.githubusercontent.com/84603388/120028500-64eb0400-c012-11eb-8a66-e44af7bf43a5.png)
-![Screenshot (265)](https://user-images.githubusercontent.com/84603388/120028504-65839a80-c012-11eb-8a4a-e401d72a08bf.png)
 
 # Conclusion: The small learning rate takes a lot of time to find the optimum minimum value and the large learning rate takes a lot of jumps and gets stuck to find the minimum value. So, we should choose a moderate value for learning rate
 
