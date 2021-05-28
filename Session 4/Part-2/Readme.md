@@ -7,6 +7,7 @@ Write a network architecture in such a way:
 - Less than 20 Epochs
 - Have used BN, Dropout, a Fully connected layer, have used GAP. 
 
+**NOTE: We have achieved 99.40% Validation Accuracy at 12th Epoch and 99.50% at 20 Epoch**
 
 ## Network Architecture:
 
