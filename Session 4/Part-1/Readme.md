@@ -78,5 +78,5 @@ Below is the error graph when we change the learning rates 0.1, 0.2, 0.5, 0.8, 1
 ![Screenshot (270)](https://user-images.githubusercontent.com/84603388/120029766-27877600-c014-11eb-9420-23c1748c5579.png)
 
 
-# Conclusion: The small learning rate takes a lot of time to find the optimum minimum value and the large learning rate takes a lot of jumps and gets stuck to find the minimum value. So, we should choose a moderate value for learning rate
+### Conclusion: The small learning rate takes a lot of time to find the optimum minimum value and the large learning rate takes a lot of jumps and gets stuck to find the minimum value. So, we should choose a moderate value for learning rate
 
