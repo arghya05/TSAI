@@ -181,7 +181,7 @@ Logs
 
 ```
 
-Evaluation
+Evaluation of Final Model 
 -----------
 
 ![](Images/prediction.png)
