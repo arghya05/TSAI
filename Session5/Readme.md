@@ -7,8 +7,13 @@
   - Less than or equal to 15 Epochs
   - Less than 10000 Parameters (additional points for doing this in less than 8000 pts)
 
-# Best Model Architecture
+Model Comparision
+----------------
 
+
+# Best Model Architecture
+  - [to notebbok](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model4_best_modelLR.ipynb)
+  
 ![alt](Images/SESS5.png)
 
 ```
@@ -64,6 +69,7 @@ Non-trainable params: 0
 | **GAP**        |  6  | 1  |	20 | 20	| 0	| 6	| 1 |	2 |	2 |	18 |	28 |
 | **CONVLUTION** |	1	 | 1  |	20 | 16	| 0	| 1	| 1	| 2	| 2	| 28 |  28 |
 | **CONVLUTION** |	1	 | 1  |	16 | 10	| 0	| 1 |	1	| 2	| 2	| 28 |	28 |
+
 
 Learning Curve
 ------------
@@ -166,4 +172,8 @@ Logs
 
 ```
 
+Evaluation
+-----------
+
+![](Images/prediction.png)
 
