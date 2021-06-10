@@ -34,7 +34,7 @@ def normalize(x, w, h):
     elif norm=='ln':
     	return nn.LayerNorm([x,w,h])
     elif norm=='gn':
-    	return nn.GroupNorm(4,x)
+    	return nn.GroupNorm(num_groups,x)
     else:
     	return None
 ```
@@ -54,8 +54,9 @@ Error rate
 ## Sample Calculations
 
 Below is the snapshot of the calculations performed on sample image inputs
+[Link to Excel](https://github.com/vivek-a81/EVA6/blob/main/Session6/Normalization%20Calculations.xlsx)
 
-<image>
+<img src="https://github.com/vivek-a81/EVA6/blob/main/Session6/images/excel_calculations.png?raw=false" style="zoom: 60%;" />
 
 ## Train and Test Graphs
 
@@ -71,7 +72,7 @@ Below is the snapshot of the calculations performed on sample image inputs
 
 
 
-<img src="https://github.com/MittalNeha/Extensive_Vision_AI6/blob/main/week5/images/stopplayinggod.jpg?raw=false" style="zoom: 60%;" />
+<img src="https://github.com/vivek-a81/EVA6/blob/main/Session6/images/excel_calculations.png?raw=false" style="zoom: 60%;" />
 
 ## Team Members
 
