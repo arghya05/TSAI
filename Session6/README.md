@@ -20,7 +20,7 @@ You are making 3 versions of your 5th assignment's best model (or pick one from 
 | **BN + L1 + L2** | 99.43 | 0.0189 | 99.48 | 0.0187 | 0.62% |
 
 The link to the notebook (with the results) is [here](https://github.com/vivek-a81/EVA6/blob/main/Session6/Sess6_finalCode.ipynb)
-
+![](images/SESS6.png)
 
 Our Module class Net() takes a parameter for normalization. For example:
 
@@ -49,7 +49,7 @@ def normalize(x, w, h):
     else:
     	return None
 ```
-![](images/SESS6.png)
+
 
 ## Understanding Normalization
 
@@ -111,13 +111,13 @@ This excel gives a good intuition about how the various  techniques work. The ca
 ![](images/final_graph.png)
 
 ## Misclassified Images
+Below are the misclassified images from the three versions of the model. It was observed that some of these images would likely be wrongly identified even by a human.
+Click on the image to see in better resolution.
 
-| ![final_gn](C:\Work\EVA6\EVA6\Session6\images\README\final_gn.png) | ![](C:\Work\EVA6\EVA6\Session6\images\README\final_ln.png) | ![](C:\Work\EVA6\EVA6\Session6\images\README\final_bn-1623435588211.png) |
+|GN + L1|LN+L2|BN+L1+L2|
 | ------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| ![final_gn](images/final_gn.png) | ![](images/final_ln.png) | ![](images/final_bn.png) |
 
-![](images/final_gn.png)
-![](images/final_bn.png)
-![](images/final_ln.png)
 
 ## Team Members
 
