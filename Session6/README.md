@@ -17,11 +17,11 @@ Our Module class Net() takes a parameter for normalization. For example:
 
 the values for norm can be:
 
-'bn': Batch Normalization
+    'bn': Batch Normalization
 
-'gn': Group Normalization
+    'gn': Group Normalization
 
-'ln': Layer Normalization
+    'ln': Layer Normalization
 
 
 
@@ -32,12 +32,13 @@ def normalize(x, w, h):
     if norm=='bn':
     	return nn.BatchNorm2d(x)
     elif norm=='ln':
-    	return nn.LayerNorm([x,w,h])
+    	return nn.GroupNorm(1,x)
     elif norm=='gn':
     	return nn.GroupNorm(num_groups,x)
     else:
     	return None
 ```
+![](images/SESS6.png)
 
 ## Understanding Normalization
 
@@ -46,6 +47,8 @@ Batch Normalization:
 Group Normalization: 
 
 Layer Normalization:
+
+![](images/normalization1.png)
 
 ## Findings on Normalization
 
