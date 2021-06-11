@@ -1,7 +1,4 @@
 # Submission for Week 6
-[TOC]
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 # Problem Statement
 
@@ -44,11 +41,11 @@ def normalize(x, w, h):
 
 ## Understanding Normalization
 
-Batch Normalization:  
-
-Group Normalization: 
-
-Layer Normalization:
+| Normalization type | How it works	| Where to use	| Observations |
+| :------: | :-------: |:-------: | :-------: |
+| **Group Normalization** |	Create group of channels, and normalize each group | Instead of batch normalization we can use group normalization because computation is independent of batch sizes. | Training start from underfitting the model but after few epochs the training gets stable. The difference between training accuracy and testing accuracy was comparatively less. Experiment were conducted using groups of 2 and 4, group of 4 showed better result. |
+| **Layer Normalization** |	Normalizes all the activation of single layers. | It has the potential of making the hidden states of the model normlized. |	Comparing with group normalization the distance between training and testing accuracy was larger. But at the end the training logs are better compare with group normalization. |
+| **Batch Normalization**	| Normalizaes the layers input rescaling and recentring the images. | Generally use as the popular methods in CNN after every layer. | We can use a lower dropout rate for better training. Training logs were better for proper normalization. |
 
 ![](images/normalization1.png)
 
