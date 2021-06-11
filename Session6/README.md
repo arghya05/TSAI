@@ -8,7 +8,11 @@ You are making 3 versions of your 5th assignment's best model (or pick one from 
 2. Network with Layer Normalization + L2
 3. Network with L1 + L2 + BN
 
+
 # Our Model
+
+[To Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session6/Sess6_finalCode.ipynb)
+
 
 Our Module class Net() takes a parameter for normalization. For example:
 
@@ -41,13 +45,15 @@ def normalize(x, w, h):
 
 ## Understanding Normalization
 
+![](images/normalization1.png)
+
+
 | Normalization type | How it works	| Where to use	| Observations |
 | :------: | :-------: |:-------: | :-------: |
 | **Group Normalization** |	Create group of channels, and normalize each group | Instead of batch normalization we can use group normalization because computation is independent of batch sizes. | Training start from underfitting the model but after few epochs the training gets stable. The difference between training accuracy and testing accuracy was comparatively less. Experiment were conducted using groups of 2 and 4, group of 4 showed better result. |
 | **Layer Normalization** |	Normalizes all the activation of single layers. | It has the potential of making the hidden states of the model normlized. |	Comparing with group normalization the distance between training and testing accuracy was larger. But at the end the training logs are better compare with group normalization. |
 | **Batch Normalization**	| Normalizaes the layers input rescaling and recentring the images. | Generally use as the popular methods in CNN after every layer. | We can use a lower dropout rate for better training. Training logs were better for proper normalization. |
 
-![](images/normalization1.png)
 
 ## Findings on Normalization
 
@@ -96,19 +102,14 @@ Below is the snapshot of the calculations performed on sample image inputs
 
 ## Train and Test Graphs
 
-<image>
-
+![](images/final_graph.png)
 
 
 ## Misclassified Images
 
-
-
-## 
-
-
-
-<img src="https://github.com/vivek-a81/EVA6/blob/main/Session6/images/excel_calculations.png?raw=false" style="zoom: 60%;" />
+![](images/final_gn.png)
+![](images/final_ln.png)
+![](images/final_bn.png)
 
 ## Team Members
 
