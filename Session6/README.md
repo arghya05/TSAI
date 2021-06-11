@@ -113,8 +113,8 @@ This excel gives a good intuition about how the various  techniques work. The ca
 
 ## Misclassified Images
 ![](images/final_gn.png)
-![](images/final_bn.png | width=100)
-![](images/final_ln.png | width=100)
+![](images/final_bn.png)
+![](images/final_ln.png)
 
 ## Team Members
 
