@@ -65,39 +65,39 @@ def normalize(x, w, h):
 
 ## Findings on Normalization
 
-Amongst the models trained, Layer Norm + L2 gave the best Test accuracy of 99.55%. Based on the logs these observations were made:
+Amongst the models trained, Layer Norm + L2 gave the best Test accuracy of 99.55% after 25 epochs. Based on the logs these observations were made:
 
-- Group Normalization + L1 is not a stable 
-- Batch Normalization + L1 + L2 is not a very stable network in terms of consistent test accuracies while training. 
+- Until 15 epochs, BN + L1 + L2 was showing best train and test accuracy. However, after this it did not train much and on further training it was seen that the model with Layer Normalization and L2 started improving.
+- The model with Group Norm took about 10 epochs to start stabilizing.
 
- In order to understand this result, we performed a number of experiments with different combinations of Normalizations. Besides the Accuracy and Loss numbers, we also calculated the **test/validation error rate** for a better intuition. 
+We performed a number of experiments with different combinations of Normalization and Regularization. Besides the Accuracy and Loss numbers, we also calculated the **test/validation error rate** for a better intuition. For faster turnaround time, **the below models were only trained for 15 epochs**.
 
 On comparing GN, BN, LN Batch Norm gave the better numbers
 
 |      | Test Accuracy | Test loss | Error Rate |
 | ---- | :-----------: | :-------: | :--------: |
-| BN   |   *99.39%*    | *0.0205*  |   *0.691   |
+| BN   |   *99.39%*    | *0.0205*  |   *0.69*   |
 | LN   |     99.2%     |  0.0280   |    0.80    |
 | GN   |    99.02%     |  0.0321   |    0.85    |
 
-Further to see the effect of L1 and L2 Norm, all the combinations were tried in the [notebook](https://github.com/vivek-a81/EVA6/blob/main/Session6/Experiment/Sess6_Experiments.ipynb) for 15 epochs each
+Further to see the effect of L1 and L2 Norm, below combinations were tried in the [notebook](https://github.com/vivek-a81/EVA6/blob/main/Session6/Experiment/Sess6_Experiments.ipynb) for 15 epochs each.
 
-|              | Test Accuracy | Test Loss | Error Rate |
-| ------------ | :-----------: | :-------: | :--------: |
-| GN           |    99.02%     |  0.0321   |    0.85    |
-| GN + L1      |    99.15%     |  0.0333   |    0.85    |
-| GN + L2      |    99.27%     |  0.2950   |    0.73    |
-| GN + L1 + L2 |    99.24%     |  0.0243   |    0.76    |
-| LN           |     99.2%     |  0.0280   |    0.80    |
-| LN + L1      |    99.26%     |  0.0276   |    0.74    |
-| LN + L2      |     99.3%     |  0.0239   |    0.70    |
-| LN + L1 + L2 |    99.12%     |  0.0305   |    0.88    |
-| BN ( 64)     |    99.39%     |  0.0205   |    0.61    |
-| BN + L1      |    99.42%     |  0.0184   |    0.58    |
-| BN + L2      |    99.31%     |  0.0212   |   0.69     |
-| BN + L1 + L2 |    99.43%     |  0.0183   |    0.57    |
+| Experiment       | Test Accuracy | Test Loss | Error Rate |
+| ---------------- | :-----------: | :-------: | :--------: |
+| GN               |    99.02%     |  0.0321   |    0.85    |
+| **GN + L1**      |   *99.15%*    |  0.0333   |   *0.85*   |
+| GN + L2          |    99.27%     |  0.2950   |    0.73    |
+| GN + L1 + L2     |    99.24%     |  0.0243   |    0.76    |
+| LN               |     99.2%     |  0.0280   |    0.80    |
+| LN + L1          |    99.26%     |  0.0276   |    0.74    |
+| **LN + L2**      |    *99.3%*    |  0.0239   |   *0.70*   |
+| LN + L1 + L2     |    99.12%     |  0.0305   |    0.88    |
+| BN ( 64)         |    99.39%     |  0.0205   |    0.61    |
+| BN + L1          |    99.42%     |  0.0184   |    0.58    |
+| BN + L2          |    99.31%     |  0.0212   |    0.69    |
+| **BN + L1 + L2** |   *99.43%*    |  0.0183   |   *0.57*   |
 
-The testing error rate is another number that is giving a good intuition about the models. 
+It is very clear from this table that ***until 15 epochs, the model with Batch Normalization was performing the best***. But perhaps, it had saturated and on further training, the other Normalizations improved the model more. The testing error rate is another number that is giving a good intuition about the models. 
 
 ## Sample Calculations
 
@@ -112,7 +112,9 @@ This excel gives a good intuition about how the various  techniques work. The ca
 
 
 ## Misclassified Images
-|<img src="images/final_gn.png" style="zoom:40%;" /> | <img src="images/final_bn.png" style="zoom:40%;" /> | <img src="images/final_ln.png" style="zoom:40%;" />|
+![](images/final_gn.png)
+![](images/final_bn.png | width=100)
+![](images/final_ln.png | width=100)
 
 ## Team Members
 
