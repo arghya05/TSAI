@@ -110,8 +110,11 @@ This excel gives a good intuition about how the various  techniques work. The ca
 
 ![](images/final_graph.png)
 
-
 ## Misclassified Images
+
+| ![final_gn](C:\Work\EVA6\EVA6\Session6\images\README\final_gn.png) | ![](C:\Work\EVA6\EVA6\Session6\images\README\final_ln.png) | ![](C:\Work\EVA6\EVA6\Session6\images\README\final_bn-1623435588211.png) |
+| ------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------ |
+
 ![](images/final_gn.png)
 ![](images/final_bn.png)
 ![](images/final_ln.png)
