@@ -1,4 +1,15 @@
 # Submission for Week 6
+- [Problem Statement](#problem-statement)
+- [Our Model](#our-model)
+    + [Results](#results)
+  * [Understanding Normalization](#understanding-normalization)
+  * [Findings on Normalization](#findings-on-normalization)
+  * [Sample Calculations](#sample-calculations)
+  * [Train and Test Graphs](#train-and-test-graphs)
+  * [Misclassified Images](#misclassified-images)
+ - [Team Members](#team-members)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 # Problem Statement
 
@@ -119,6 +130,6 @@ Click on the image to see in better resolution.
 | ![final_gn](images/final_gn.png) | ![](images/final_ln.png) | ![](images/final_bn.png) |
 
 
-## Team Members
+# Team Members
 
 Neha Mittal, Vivek Chaudhary
