@@ -19,7 +19,7 @@ You are making 3 versions of your 5th assignment's best model (or pick one from 
 | **LN + L2** | 99.46 | 0.018 | **99.55** | **0.0154** | **0.45%**|
 | **BN + L1 + L2** | 99.43 | 0.0189 | 99.48 | 0.0187 | 0.62% |
 
-[To Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session6/Sess6_finalCode.ipynb)
+The link to the notebook (with the results) is [here](https://github.com/vivek-a81/EVA6/blob/main/Session6/Sess6_finalCode.ipynb)
 
 
 Our Module class Net() takes a parameter for normalization. For example:
@@ -93,9 +93,9 @@ Further to see the effect of L1 and L2 Norm, all the combinations were tried in 
 | LN + L2      |     99.3%     |  0.0239   |    0.70    |
 | LN + L1 + L2 |    99.12%     |  0.0305   |    0.88    |
 | BN ( 64)     |    99.39%     |  0.0205   |    0.61    |
-| BN + L1      |    99.42%     |  0.0184   |            |
-| BN + L2      |    99.31%     |  0.0212   |            |
-| BN + L1 + L2 |               |           |            |
+| BN + L1      |    99.42%     |  0.0184   |    0.58    |
+| BN + L2      |    99.31%     |  0.0212   |   0.69     |
+| BN + L1 + L2 |    99.43%     |  0.0183   |    0.57    |
 
 The testing error rate is another number that is giving a good intuition about the models. 
 
@@ -112,10 +112,7 @@ This excel gives a good intuition about how the various  techniques work. The ca
 
 
 ## Misclassified Images
-
-![](images/final_gn.png)
-![](images/final_ln.png)
-![](images/final_bn.png)
+|<img src="images/final_gn.png" style="zoom:40%;" /> | <img src="images/final_bn.png" style="zoom:40%;" /> | <img src="images/final_ln.png" style="zoom:40%;" />|
 
 ## Team Members
 
