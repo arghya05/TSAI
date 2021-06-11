@@ -11,6 +11,14 @@ You are making 3 versions of your 5th assignment's best model (or pick one from 
 
 # Our Model
 
+### Results
+
+| Model | Training Acc | Train Loss | Testing Acc | Testing Loss | Error Rate |
+| :----: | :----: | :----: | :----: | :----: | :----: |
+| **GN + L1** | 99.44 | 0.01879 | 99.46 | 0.0185 | 0.54% |
+| **LN + L2** | 99.46 | 0.018 | **99.55** | **0.0154** | **0.45%**|
+| **BN + L1 + L2** | 99.43 | 0.0189 | 99.48 | 0.0187 | 0.62% |
+
 [To Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session6/Sess6_finalCode.ipynb)
 
 
