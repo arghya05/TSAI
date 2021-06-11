@@ -20,7 +20,7 @@ class Net(nn.Module):
           if norm=='bn':
             return nn.BatchNorm2d(x)
           elif norm=='ln':
-            return nn.LayerNorm([x,w,h])
+            return nn.GroupNorm(1, x)
           elif norm=='gn':
             return nn.GroupNorm(num_groups,x)    # 4 layers to be grouped
           else:
