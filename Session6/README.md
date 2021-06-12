@@ -122,7 +122,7 @@ This excel gives a good intuition about how the various  techniques work. The ca
 
 ## Misclassified Images
 Below are the misclassified images from the three versions of the model. It was observed that some of these images would likely be wrongly identified even by a human.
-Click on the image to see in better resolution.
+**Click on the image to see in better resolution.**
 
 |GN + L1|LN+L2|BN+L1+L2|
 | ------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------ |
