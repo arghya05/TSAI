@@ -3,13 +3,12 @@
 - [Our Model](#our-model)
     + [Results](#results)
   * [Understanding Normalization](#understanding-normalization)
-  * [Findings on Normalization](#findings-on-normalization)
+  * [Findings on Normalization For Normalization ](#findings-on-normalization-for-normalization )
   * [Sample Calculations](#sample-calculations)
   * [Train and Test Graphs](#train-and-test-graphs)
   * [Misclassified Images](#misclassified-images)
  - [Team Members](#team-members)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 # Problem Statement
 
@@ -110,7 +109,7 @@ Further to see the effect of L1 and L2 Norm, below combinations were tried in th
 
 It is very clear from this table that ***until 15 epochs, the model with Batch Normalization was performing the best***. But perhaps, it had saturated and on further training, the other Normalizations improved the model more. The testing error rate is another number that is giving a good intuition about the models. 
 
-## Sample Calculations
+## Sample Calculations For Normalization 
 
 This excel gives a good intuition about how the various  techniques work. The calculations were done for a batch size of 4. Below is the snapshot of the calculations performed on sample image inputs
 [Link to Excel](https://github.com/vivek-a81/EVA6/blob/main/Session6/Normalization%20Calculations.xlsx)
