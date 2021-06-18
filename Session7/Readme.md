@@ -1,6 +1,8 @@
 # Submission for Week 7 Late Assignment ON Time
 - [Problem Statement](#problem-statement)
 - [Results & Analysis](#results-analysis)
+  * [Augumentaion Strategy Used](#augumentaion-strategy-used)
+  * [Our Learnings] (#our-learnings)
 - [CIFAR-10 Vizualization And Augmentation](#cifar-10-vizualization-and-augmentation)
 - [Our Model](#our-model)
   * [Training Log](#training-log)
@@ -21,18 +23,18 @@
   - one of the layers must use Dilated Convolution
   - use GAP (compulsory mapped to # of classes):- CANNOT add FC after GAP to target #of classes 
   - use albumentation library and apply:
-  - horizontal flip
-  - shiftScaleRotate 
-  - coarseDropout (max_holes = 1, max_height=16px, max_width=1, min_holes = 1, min_height=16px, min_width=16px, fill_value=(mean of your dataset), mask_fill_value = None)
-  - grayscale
+      - horizontal flip
+      - shiftScaleRotate 
+      - coarseDropout (max_holes = 1, max_height=16px, max_width=1, min_holes = 1, min_height=16px, min_width=16px, fill_value=(mean of your dataset), mask_fill_value = None)
+      - grayscale
   - achieve 87% accuracy, as many epochs as you want. Total Params to be less than 100k
 
 # Results Analysis
 
-- [to notebook](https://github.com/vivek-a81/EVA6/blob/main/Session7/S7_finalV2.ipynb)
-- [Load Model](https://github.com/vivek-a81/EVA6/blob/main/Session7/model.py)
+- [notebook link](https://github.com/vivek-a81/EVA6/blob/main/Session7/S7_finalV2.ipynb)
+- [model.py](https://github.com/vivek-a81/EVA6/blob/main/Session7/model.py)
 
-#### Agumentaion Strategy Used
+#### Augumentaion Strategy Used
 
 ```
 A.HorizontalFlip(),
@@ -43,11 +45,11 @@ A.ToGray()
 #### Our Learnings
 
 - Receptive Field was an important parameter to consider in order to get good accuracy. When we designed a model by just keeping the number parameters in mind, it performed very poorly after training. We then created a table to calculate the Receptive Field alongside to keep an eye on how good the receptive field was. Even if we increased the parameters without increasing the RF, the accuracy did not improve. 
-- Adding additional pure convolution layer before the first transition b
+- Adding additional pure convolution layer before the first transition block helped.
 - Replacing Max Pooling layer with a dilated kernel is a challenge. One way to do this is to use high dilation rate. However, this would lead to high information loss. Hence we read through and found that series of dilated kernels should be used to cover every pixel point on the image. This is called hybrid dilated convolution (HDC).
-- Taking reference from mobilenet, we used a depthwise separable convolution with a stride of 2 in place of max pooling. This reduced the number of parameters used 
+- Taking reference from mobilenet, we used a depthwise separable convolution with a stride of 2 in place of max pooling. This reduced the number of parameters used significantly.
 - Effective Kernel size formula when using dilation **k<sub>eff</sub> = k + (k-1)*(rate-1)**
-<img src="images/handwritten.png" alt="drawing" height="450">
+<img src="images/handwritten.png" alt="drawing" height="550">
  
 # CIFAR-10 Vizualization And Augmentation
 
@@ -57,7 +59,8 @@ A.ToGray()
   <img src="images/visualization_2.png" alt="drawing" width="700" height="550">
 </p>
 
-- Agumentation 
+- Augmentation 
+Effect of applying the augmentation on some of the test images.
 
 <p float="center">
   <img src="images/visualization_1.png" alt="drawing" width="750" height="650">
@@ -65,7 +68,10 @@ A.ToGray()
 
 
 # Our Model
-
+This is the basic skeleton of our model. The table below shows the calculated receptive field. We have used
+1. Two Depthwise Separable Convolutions
+2. dilated kernels instead of Max pooling in the last transition block.
+3. less than 100k parameters
 
 <p float="center">
   <img src="images/RF.png" alt="drawing">
@@ -167,10 +173,11 @@ Test set: Average loss: 0.3876, Accuracy: 8723/10000 (87.23%)
 </p>
 
 ### Missclassified Images
+Some interesting observations from the misclassified images
 
 | | | |
 | :------------------------------------------------------------: | :----------------------------------------------------------: | :------------------------------------------------------------: |
-|   ..................  | ........................... | ........................ |
+|   In the first row, the bird got misclassified as a cat. That's probably because the wings of the bird are not visible  | In first row, deer is missclassified as aeroplane, probably because of the blue background and the deer horns look like plane wings. Also, the plane in 2nd row got detected as horse, because the background is not blue. | ship was classified as plane probably because the color under the ship is not blue but the blue sky is visible. Also airplace got classified as a truck since the background is not blue. |
 | <img src="images/misclassify1.png" alt="drawing" height="500"> | <img src="images/misclassify2.png" alt="drawing" height="500"> | <img src="images/misclassify3.png" alt="drawing" height="500"> |
 
 ### Accuracy Of Each Class
