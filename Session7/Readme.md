@@ -188,16 +188,16 @@ Some interesting observations from the misclassified images
 ### Accuracy Of Each Class
 
 ```
-Accuracy of airplane : 90 %
-Accuracy of automobile : 95 %
-Accuracy of  bird : 76 %
-Accuracy of   cat : 71 %
-Accuracy of  deer : 78 %
-Accuracy of   dog : 76 %
-Accuracy of  frog : 79 %
-Accuracy of horse : 89 %
-Accuracy of  ship : 88 %
-Accuracy of truck : 77 %
+Accuracy of airplane : 88 %
+Accuracy of automobile : 96 %
+Accuracy of  bird : 83 %
+Accuracy of   cat : 76 %
+Accuracy of  deer : 87 %
+Accuracy of   dog : 78 %
+Accuracy of  frog : 86 %
+Accuracy of horse : 93 %
+Accuracy of  ship : 93 %
+Accuracy of truck : 92 %
 ```
 
 Refrences
