@@ -172,8 +172,11 @@ Test set: Average loss: 0.3876, Accuracy: 8723/10000 (87.23%)
   <img src="images/graph.png" alt="drawing" height="350">
 </p>
 
-### Missclassified Images
+### Misclassified Images
 Some interesting observations from the misclassified images
+- Huge confusion between cat, dog, deer was seen.
+- Some confusion was seen between truck and automobile.
+- Further to these, below are some observations based on the test images.
 
 | | | |
 | :------------------------------------------------------------: | :----------------------------------------------------------: | :------------------------------------------------------------: |
