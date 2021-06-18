@@ -1,4 +1,4 @@
-# Submission for Week 7 Late Assignment ON Time
+# Submission for Week 7 (Late Assignment ON Time)
 - [Problem Statement](#problem-statement)
 - [Results & Analysis](#results-analysis)
   * [Augumentaion Strategy Used](#augumentaion-strategy-used)
