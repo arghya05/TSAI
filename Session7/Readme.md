@@ -1,4 +1,4 @@
-# Submission for Week 7
+# Submission for Week 7 Late Assignment ON Time
 
 
 # Problem Statement
@@ -17,10 +17,23 @@
   - grayscale
   - achieve 87% accuracy, as many epochs as you want. Total Params to be less than 100k
 
+# Results & Analysis
 
+- [to notebook](https://github.com/vivek-a81/EVA6/blob/main/Session7/S7_finalV2.ipynb)
+- [Load Model](https://github.com/vivek-a81/EVA6/blob/main/Session7/model.py)
+
+#### Agumentaion Strategy Used
+
+```
+A.HorizontalFlip(),
+A.ShiftScaleRotate(),
+A.CoarseDropout(1, 16, 16, 1, 16, 16,fill_value=0.473363, mask_fill_value=None),
+A.ToGray()
+```
+ 
 # CIFAR-10 Vizualization & Augmentation
 
-- DataSet
+- **DataSet:** CIFAR-10 has 10 classes of 32,32 that are airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck
 
 <p float="center">
   <img src="images/visualization_2.png" alt="drawing" width="700" height="550">
@@ -33,5 +46,130 @@
 </p>
 
 
-
 # Out Model
+
+
+<p float="center">
+  <img src="images/RF.png" alt="drawing">
+</p>
+
+```
+Total params: 86,816
+Trainable params: 86,816
+Non-trainable params: 0
+```
+
+### Training Log
+
+```
+EPOCH: 90
+
+Batch_id=781 Loss=0.57727 Accuracy=79.78: 100%|██████████| 782/782 [00:05<00:00, 140.26it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3919, Accuracy: 8689/10000 (86.89%)
+
+EPOCH: 91
+
+Batch_id=781 Loss=0.57028 Accuracy=79.96: 100%|██████████| 782/782 [00:05<00:00, 141.06it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3909, Accuracy: 8701/10000 (87.01%)
+
+EPOCH: 92
+
+Batch_id=781 Loss=0.56919 Accuracy=80.24: 100%|██████████| 782/782 [00:05<00:00, 139.02it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3909, Accuracy: 8726/10000 (87.26%)
+
+EPOCH: 93
+
+Batch_id=781 Loss=0.56956 Accuracy=80.03: 100%|██████████| 782/782 [00:05<00:00, 139.88it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3875, Accuracy: 8714/10000 (87.14%)
+
+EPOCH: 94
+
+Batch_id=781 Loss=0.56150 Accuracy=80.12: 100%|██████████| 782/782 [00:05<00:00, 140.19it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3886, Accuracy: 8706/10000 (87.06%)
+
+EPOCH: 95
+
+Batch_id=781 Loss=0.55917 Accuracy=80.49: 100%|██████████| 782/782 [00:05<00:00, 140.80it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3875, Accuracy: 8695/10000 (86.95%)
+
+EPOCH: 96
+
+Batch_id=781 Loss=0.55844 Accuracy=80.41: 100%|██████████| 782/782 [00:05<00:00, 140.66it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3883, Accuracy: 8712/10000 (87.12%)
+
+EPOCH: 97
+
+Batch_id=781 Loss=0.56086 Accuracy=80.50: 100%|██████████| 782/782 [00:05<00:00, 140.29it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3884, Accuracy: 8712/10000 (87.12%)
+
+EPOCH: 98
+
+Batch_id=781 Loss=0.55907 Accuracy=80.67: 100%|██████████| 782/782 [00:05<00:00, 140.17it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3868, Accuracy: 8710/10000 (87.10%)
+
+EPOCH: 99
+
+Batch_id=781 Loss=0.55661 Accuracy=80.51: 100%|██████████| 782/782 [00:05<00:00, 141.24it/s]
+  0%|          | 0/782 [00:00<?, ?it/s]
+
+Test set: Average loss: 0.3873, Accuracy: 8725/10000 (87.25%)
+
+EPOCH: 100
+
+Batch_id=781 Loss=0.55942 Accuracy=80.51: 100%|██████████| 782/782 [00:05<00:00, 140.16it/s]
+
+Test set: Average loss: 0.3876, Accuracy: 8723/10000 (87.23%)
+
+```
+
+# Model Evaluation
+
+### Learning Curve
+
+<p float="center">
+  <img src="images/graph.png" alt="drawing" height="350">
+</p>
+
+### Missclassified Images
+<p float="center">
+  <img src="images/misclassify1.png" alt="drawing" height="1050">
+</p>
+
+### Accuracy Of Each Class
+
+```
+Accuracy of airplane : 90 %
+Accuracy of automobile : 95 %
+Accuracy of  bird : 76 %
+Accuracy of   cat : 71 %
+Accuracy of  deer : 78 %
+Accuracy of   dog : 76 %
+Accuracy of  frog : 79 %
+Accuracy of horse : 89 %
+Accuracy of  ship : 88 %
+Accuracy of truck : 77 %
+```
+
+Team Members
+------------------------
+
+Neha Mittal, Vivek Chaudhary
+
