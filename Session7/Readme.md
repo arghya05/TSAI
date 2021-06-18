@@ -132,7 +132,7 @@ Test set: Average loss: 0.3876, Accuracy: 8723/10000 (87.23%)
 ### Learning Curve
 
 <p float="center">
-  <img src="images/graph.png" alt="drawing" height="400">
+  <img src="images/graph.png" alt="drawing" height="350">
 </p>
 
 ### Missclassified Images
