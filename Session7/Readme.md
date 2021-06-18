@@ -8,6 +8,7 @@
   * [Learning Curve](#learning-curve)
   * [Missclassified Images](#missclassified-images)
   * [Accuracy Of Each Class](#accuracy-of-each-class)
+- [Refrences](#refrences)
 - [Team Members](#team-members)
 
 # Problem Statement
@@ -158,9 +159,11 @@ Test set: Average loss: 0.3876, Accuracy: 8723/10000 (87.23%)
 </p>
 
 ### Missclassified Images
-<p float="center">
-  <img src="images/misclassify1.png" alt="drawing" height="1050">
-</p>
+
+| | | |
+| :------------------------------------------------------------: | :----------------------------------------------------------: | :------------------------------------------------------------: |
+|   ..................  | ........................... | ........................ |
+| <img src="images/misclassify1.png" alt="drawing" height="500"> | <img src="images/misclassify2.png" alt="drawing" height="500"> | <img src="images/misclassify3.png" alt="drawing" height="500"> |
 
 ### Accuracy Of Each Class
 
@@ -176,6 +179,15 @@ Accuracy of horse : 89 %
 Accuracy of  ship : 88 %
 Accuracy of truck : 77 %
 ```
+
+Refrences
+----------------
+- https://arxiv.org/pdf/1803.08904.pdf 
+- https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8756165
+- https://arxiv.org/pdf/1704.04861.pdf
+- https://github.com/zhixuhao/unet/blob/master/model.py
+- https://arxiv.org/pdf/1505.04597.pdf
+
 
 Team Members
 ------------------------
