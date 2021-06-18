@@ -40,6 +40,12 @@ A.ShiftScaleRotate(),
 A.CoarseDropout(1, 16, 16, 1, 16, 16,fill_value=0.473363, mask_fill_value=None),
 A.ToGray()
 ```
+#### Our Learnings
+
+- Receptive Field was an important parameter to consider in order to get good accuracy. When we designed a model by just keeping the number parameters in mind, it performed very poorly after training. We then created a table to calculate the Receptive Field alongside to keep an eye on how good the receptive field was. Even if we increased the parameters without increasing the RF, the accuracy did not improve. 
+- Adding additional pure convolution layer before the first transition b
+- Replacing Max Pooling layer with a dilated kernel is a challenge. One way to do this is to use high dilation rate. However, this would lead to high information loss. Hence we read through and found that series of dilated kernels should be used to cover every pixel point on the image. This is called hybrid dilated convolution (HDC).
+- Taking reference from mobilenet, we used a depthwise separable convolution with a stride of 2 in place of max pooling. This reduced the number of parameters used 
  
 # CIFAR-10 Vizualization And Augmentation
 
