@@ -47,7 +47,7 @@ A.ToGray()
 - Replacing Max Pooling layer with a dilated kernel is a challenge. One way to do this is to use high dilation rate. However, this would lead to high information loss. Hence we read through and found that series of dilated kernels should be used to cover every pixel point on the image. This is called hybrid dilated convolution (HDC).
 - Taking reference from mobilenet, we used a depthwise separable convolution with a stride of 2 in place of max pooling. This reduced the number of parameters used 
 - Effective Kernel size formula when using dilation **k<sub>eff</sub> = k + (k-1)*(rate-1)**
-<img src="images/handwritten.jfif" alt="drawing" height="550">
+<img src="images/handwritten.png" alt="drawing" height="450">
  
 # CIFAR-10 Vizualization And Augmentation
 
