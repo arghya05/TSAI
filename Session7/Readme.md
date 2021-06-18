@@ -1,5 +1,14 @@
 # Submission for Week 7 Late Assignment ON Time
-
+- [Problem Statement](#problem-statement)
+- [Results & Analysis](#results-analysis)
+- [CIFAR-10 Vizualization And Augmentation](#cifar-10-vizualization-and-augmentation)
+- [Our Model](#our-model)
+  * [Training Log](#training-log)
+- [Model Evaluation](#model-evaluation)
+  * [Learning Curve](#learning-curve)
+  * [Missclassified Images](#missclassified-images)
+  * [Accuracy Of Each Class](#accuracy-of-each-class)
+- [Team Members](#team-members)
 
 # Problem Statement
 
@@ -17,7 +26,7 @@
   - grayscale
   - achieve 87% accuracy, as many epochs as you want. Total Params to be less than 100k
 
-# Results & Analysis
+# Results Analysis
 
 - [to notebook](https://github.com/vivek-a81/EVA6/blob/main/Session7/S7_finalV2.ipynb)
 - [Load Model](https://github.com/vivek-a81/EVA6/blob/main/Session7/model.py)
@@ -31,7 +40,7 @@ A.CoarseDropout(1, 16, 16, 1, 16, 16,fill_value=0.473363, mask_fill_value=None),
 A.ToGray()
 ```
  
-# CIFAR-10 Vizualization & Augmentation
+# CIFAR-10 Vizualization And Augmentation
 
 - **DataSet:** CIFAR-10 has 10 classes of 32,32 that are airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck
 
@@ -42,11 +51,11 @@ A.ToGray()
 - Agumentation 
 
 <p float="center">
-  <img src="images/visualization_1.png" alt="drawing" width="700" height="550">
+  <img src="images/visualization_1.png" alt="drawing" width="750" height="650">
 </p>
 
 
-# Out Model
+# Our Model
 
 
 <p float="center">
