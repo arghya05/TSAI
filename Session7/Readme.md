@@ -2,7 +2,7 @@
 - [Problem Statement](#problem-statement)
 - [Results & Analysis](#results-analysis)
   * [Augumentaion Strategy Used](#augumentaion-strategy-used)
-  * [Our Learnings] (#our-learnings)
+  * [Our Learnings](#our-learnings)
 - [CIFAR-10 Vizualization And Augmentation](#cifar-10-vizualization-and-augmentation)
 - [Our Model](#our-model)
   * [Training Log](#training-log)
