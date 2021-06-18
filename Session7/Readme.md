@@ -30,6 +30,8 @@
   - achieve 87% accuracy, as many epochs as you want. Total Params to be less than 100k
 
 # Results Analysis
+The accuracy of 87% was achieved in 90 epochs. Our model has 86,816 parameters. 
+It uses dilated convolution in one of the transition layers.
 
 - [notebook link](https://github.com/vivek-a81/EVA6/blob/main/Session7/S7_finalV2.ipynb)
 - [model.py](https://github.com/vivek-a81/EVA6/blob/main/Session7/model.py)
