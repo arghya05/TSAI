@@ -8,7 +8,7 @@
   * [Training Log](#training-log)
 - [Model Evaluation](#model-evaluation)
   * [Learning Curve](#learning-curve)
-  * [Missclassified Images](#missclassified-images)
+  * [Missclassified Images](#misclassified-images)
   * [Accuracy Of Each Class](#accuracy-of-each-class)
 - [Refrences](#refrences)
 - [Team Members](#team-members)
