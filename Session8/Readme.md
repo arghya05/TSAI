@@ -79,7 +79,11 @@ ResNet 34 Misclassified Images
   <img src="images/net_34_mis_clf.png" alt="drawing" height="550">
 </p>
 
-
+References
+------------------------
+https://pytorch.org/tutorials/beginner/former_torchies/nnft_tutorial.html
+http://gradcam.cloudcv.org/
+https://github.com/kazuto1011/grad-cam-pytorch/tree/fd10ff7fc85ae064938531235a5dd3889ca46fed
 
 Team Members
 ------------------------
