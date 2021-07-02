@@ -24,6 +24,22 @@
 
 # Results Analysis
 
+- Test Accuracy : 88.01%
+- Train Accuracy : 87.74%
+- In the last layer of ResNet18 we have used stide of 1
+- We also ResNet 34 which overfitted on class **Truck**
+
+Agumentation Strategy Used
+```
+A.Compose({
+  A.Rotate (limit=5, interpolation=1, border_mode=4, value=None, mask_value=None, always_apply=False, p=0.5),
+  A.Sequential([A.CropAndPad(px=4, keep_size=False), #padding of 2, keep_size=True by default
+                A.RandomCrop(32,32)]),
+  A.CoarseDropout(1, 16, 16, 1, 16, 16,fill_value=0.473363, mask_fill_value=None),
+  A.Normalize((0.49139968, 0.48215841, 0.44653091), (0.24703223, 0.24348513, 0.26158784)),
+})
+```
+
 # CIFAR-10 Augmentation Vizualization
 
 - **DataSet:** CIFAR-10 has **10 classes** of **32,32** that are **Airplane, Automobile, Bird, Cat, Deer, Dog, Frog, Horse, Ship & Truck**
