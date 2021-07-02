@@ -6,9 +6,10 @@
 - [Model Evaluation](#model-evaluation)
   * [ResNet 18 Learning Curve](#resnet-18-learning-curve)
   * [ResNet 18 Misclassified Images](#resnet-18-misclassified-images)
+  * [Grad-Cam ResNet 18](#grad-cam-resnet18)
   * [ResNet 34 Learning Curve](#resnet-34-learning-curve)
   * [ResNet 34 Misclassified Images](#resnet-34-misclassified-images)
-  * [Grad-Cam](#grad-cam)
+  * [Grad-Cam ResNet 34](#grad-cam-resnet34)
 - [Team Members](#team-members)
 
 
@@ -28,7 +29,7 @@
 
 # CIFAR-10 Augmentation Vizualization
 
-- **DataSet:** CIFAR-10 has 10 classes of 32,32 that are airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck
+- **DataSet:** CIFAR-10 has **10 classes** of **32,32** that are **Airplane, Automobile, Bird, Cat, Deer, Dog, Frog, Horse, Ship & Truck**
 
 <p float="center">
   <img src="images/aug.png" alt="drawing" width="650" height="550">
@@ -36,6 +37,14 @@
 
 
 # Model Evaluation
+
+We have plotted
+* ResNet 18 Learning Curve
+* ResNet 18 Misclassified Images
+* Grad-Cam ResNet 18
+* ResNet 34 Learning Curve
+* ResNet 34 Misclassified Images
+* Grad-Cam ResNet 34
 
 ResNet 18 Learning Curve
 --------------------------
