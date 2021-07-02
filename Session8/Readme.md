@@ -27,7 +27,7 @@
 - Test Accuracy : 88.01%
 - Train Accuracy : 87.74%
 - In the last layer of ResNet18 we have used stide of 1
-- We also ResNet 34 which overfitted on class **Truck**
+- We also trained ResNet 34 which overfitted on class **Truck**
 
 Agumentation Strategy Used
 ```
