@@ -23,13 +23,15 @@
   - **Must** use LayerNormalization ONLY
 
 # Results Analysis
+Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session8/session_8.ipynb)
 
+Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
 - Test Accuracy : 88.01%
 - Train Accuracy : 87.74%
 - In the last layer of ResNet18 we have used stide of 1
 - We also trained ResNet 34 which overfitted on class **Truck**
 
-Agumentation Strategy Used
+Augmentation Strategy Used
 ```
 A.Compose({
   A.Rotate (limit=5, interpolation=1, border_mode=4, value=None, mask_value=None, always_apply=False, p=0.5),
