@@ -47,7 +47,10 @@ Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
 - Train Accuracy : 94.34%
 - LR finder was used to find the best accuracy and used as the lr_max in OneCycleLR
 - Adding L2 Regularisation boosted the performance of the model  
-
+LR Finder plot
+<p float="center">
+  <img src="images/lr-finder.png" alt="drawing" width="450" height="350">
+</p>
 Augmentation Strategy Used
 ```
      A.Sequential([
@@ -70,6 +73,9 @@ scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer,
                                                 anneal_strategy='linear'
                                                 ) 
 ```
+<p float="center">
+  <img src="images/lr-model-1.png" alt="drawing" width="350" height="250">
+</p>
 
 # CIFAR-10 Augmentation Vizualization
 
