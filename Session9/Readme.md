@@ -11,46 +11,56 @@
 
 
 # Problem Statement
+- - **Write a custom ResNet architecture for CIFAR10 that has the following architecture:**
+  - PrepLayer - Conv 3x3 s1, p1) >> BN >> RELU [64k]
+  - Layer1 -
+    - X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [128k]
+    - R1 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [128k] 
+    - Add(X, R1)
+  - Layer 2 -
+    - Conv 3x3 [256k]
+    - MaxPooling2D
+    - BN
+    - ReLU
+  - Layer 3 -
+    - X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [512k]
+    - R2 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [512k]
+    - Add(X, R2)
+   - MaxPooling with Kernel Size 4
+   - FC Layer 
+   - SoftMax
+  - Uses One Cycle Policy such that:
+  - Total Epochs = 24
+  - Max at Epoch = 5
+  - LRMIN = FIND
+  - LRMAX = FIND
+  - NO Annihilation
+  - Uses this transform -RandomCrop 32, 32 (after padding of 4) >> FlipLR >> Followed by CutOut(8, 8)
+  - Batch size = 512
+ - Target Accuracy: 90% (93% for late submission or double scores). 
+ - NO score if your code is not modular. Your collab must be importing your GitHub package, and then just running the model. I should be able to find the custom_resnet.py model in your GitHub repo that you'd be training. 
+ - Once done, proceed to answer the Assignment-Solution page. 
 
-1. Write a custom ResNet architecture for CIFAR10 that has the following architecture:
-
-   1. PrepLayer - Conv 3x3 s1, p1) >> BN >> RELU [64k]
-   2. Layer1 -
-      1. X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [128k]
-      2. R1 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [128k] 
-      3. Add(X, R1)
-   3. Layer 2 -
-      1. Conv 3x3 [256k]
-      2. MaxPooling2D
-      3. BN
-      4. ReLU
-   4. Layer 3 -
-      1. X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [512k]
-      2. R2 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [512k]
-      3. Add(X, R2)
-   5. MaxPooling with Kernel Size 4
-   6. FC Layer 
-   7. SoftMax
-2. Uses One Cycle Policy such that:
-   1. Total Epochs = 24
-   2. Max at Epoch = 5
-   3. LRMIN = FIND
-   4. LRMAX = FIND
-   5. NO Annihilation
-3. Uses this transform -RandomCrop 32, 32 (after padding of 4) >> FlipLR >> Followed by CutOut(8, 8)
-4. Batch size = 512
-5. Target Accuracy: 90% **(93% for late submission or double scores)**. 
 
 # Results Analysis
 Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session8/session_8.ipynb)
 
 Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
-- Test Accuracy : 88.01%
+- Test Accuracy : 88.00%
 - Train Accuracy : 87.74%
-- In the last layer of ResNet18 we have used stide of 1
-- We also trained ResNet 34 which overfitted on class **Truck**
+- In the last linear layer few experiments were leading us to a better result
+- Adding L2 Regularisation boosted the performance of the model  
 
-
+Augmentation Strategy Used
+```
+     A.Sequential([
+                   A.CropAndPad(px=4, keep_size=False), #padding of 2, keep_size=True by defaulf
+                   A.RandomCrop(32,32)
+                   ]),
+     A.HorizontalFlip(),
+     A.CoarseDropout(1, 8, 8, 1, 8, 8,fill_value=0.473363, mask_fill_value=None),
+     A.Normalize((0.49139968, 0.48215841, 0.44653091), (0.24703223, 0.24348513, 0.26158784))
+```
 
 # CIFAR-10 Augmentation Vizualization
 
@@ -63,24 +73,42 @@ Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
 
 # Model Evaluation
 
+We have plotted
+* ResNet 18 Learning Curve
+* ResNet 18 Misclassified Images
+* Grad-Cam ResNet 18
+
+
+ResNet 18 Learning Curve
+--------------------------
+
+<p float="center">
+  <img src="images/net_18.png" alt="drawing" width="750">
+</p>
 
 
 ResNet 18 Misclassified Images
 --------------------------
 
-
+<p float="center">
+  <img src="images/missclasified.png" alt="drawing" height="550">
+</p>
 
 
 GradCam ResNet18
 --------------------------
 
+<p float="center">
+  <img src="images/gradcam.png" alt="drawing" height="550">
+</p>
 
 
 References
 ------------------------
 
-* https://www.kaggle.com/gilf641/lr-finder-using-pytorch
-* http://gradcam.cloudcv.org
+* https://pytorch.org/tutorials/beginner/former_torchies/nnft_tutorial.html
+* http://gradcam.cloudcv.org/
+* https://github.com/kazuto1011/grad-cam-pytorch/tree/fd10ff7fc85ae064938531235a5dd3889ca46fed
 
 
 Team Members
