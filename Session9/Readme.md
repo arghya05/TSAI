@@ -6,7 +6,6 @@
 - [Model Evaluation](#model-evaluation)
   * [Custom-resnet Learning Curve](#Custom-resnet-learning-curve)
   * [Custom-resnet Misclassified Images](#Custom-resnet-misclassified-images)
-  * [Grad-Cam Custom-resnet](#gradcam-Custom-resnet)
 - [Team Members](#team-members)
 
 
@@ -76,14 +75,13 @@ Augmentation Strategy Used
 We have plotted
 * Custom resnet Learning Curve
 * Custom resnet Misclassified Images
-* Grad-Cam Custom resnet
 
 
 Custom resnet Learning Curve
 --------------------------
 
 <p float="center">
-  <img src="images/net_18.png" alt="drawing" width="750">
+  <img src="images/ler_cur.png" alt="drawing" width="750">
 </p>
 
 
@@ -91,15 +89,7 @@ Custom resnet Misclassified Images
 --------------------------
 
 <p float="center">
-  <img src="images/missclasified.png" alt="drawing" height="550">
-</p>
-
-
-GradCam Custom resnet
---------------------------
-
-<p float="center">
-  <img src="images/gradcam.png" alt="drawing" height="550">
+  <img src="images/mis_clf.png" alt="drawing" height="550">
 </p>
 
 
