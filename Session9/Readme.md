@@ -1,4 +1,4 @@
-# Submission for Week 9 (Early Assignment ON Time)
+# Submission for Week 9 (Early Assignment)
 
 - [Problem Statement](#problem-statement)
 - [Results & Analysis](#results-analysis)
@@ -37,17 +37,15 @@
   - Uses this transform -RandomCrop 32, 32 (after padding of 4) >> FlipLR >> Followed by CutOut(8, 8)
   - Batch size = 512
  - Target Accuracy: 90% (93% for late submission or double scores). 
- - NO score if your code is not modular. Your collab must be importing your GitHub package, and then just running the model. I should be able to find the custom_resnet.py model in your GitHub repo that you'd be training. 
- - Once done, proceed to answer the Assignment-Solution page. 
 
 
 # Results Analysis
 Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session9/Session9.ipynb)
 
 Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
-- Test Accuracy : 88.00%
-- Train Accuracy : 87.74%
-- In the last linear layer few experiments were leading us to a better result
+- Test Accuracy : 88.66%
+- Train Accuracy : 94.34%
+- LR finder was used to find the best accuracy and used as the lr_max in OneCycleLR
 - Adding L2 Regularisation boosted the performance of the model  
 
 Augmentation Strategy Used
@@ -59,6 +57,18 @@ Augmentation Strategy Used
      A.HorizontalFlip(),
      A.CoarseDropout(1, 8, 8, 1, 8, 8,fill_value=0.473363, mask_fill_value=None),
      A.Normalize((0.49139968, 0.48215841, 0.44653091), (0.24703223, 0.24348513, 0.26158784))
+```
+One Cycle Policy
+```
+scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, 
+                                                max_lr=ler_rate/10,
+                                                steps_per_epoch=len(train_loader), 
+                                                epochs=24,
+                                                pct_start=0.2,
+                                                div_factor=10,
+                                                three_phase=False, 
+                                                anneal_strategy='linear'
+                                                ) 
 ```
 
 # CIFAR-10 Augmentation Vizualization
