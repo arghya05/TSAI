@@ -42,7 +42,7 @@
 
 
 # Results Analysis
-Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session8/session_8.ipynb)
+Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session9/session-9.ipynb)
 
 Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
 - Test Accuracy : 88.00%
@@ -96,9 +96,9 @@ Custom resnet Misclassified Images
 References
 ------------------------
 
-* https://pytorch.org/tutorials/beginner/former_torchies/nnft_tutorial.html
-* http://gradcam.cloudcv.org/
-* https://github.com/kazuto1011/grad-cam-pytorch/tree/fd10ff7fc85ae064938531235a5dd3889ca46fed
+* https://github.com/davidtvs/pytorch-lr-finder
+* https://stackoverflow.com/questions/54553388/have-i-implemented-implemenation-of-learning-rate-finder-correctly
+* https://discuss.pytorch.org/t/get-the-best-learning-rate-automatically/58269
 
 
 Team Members
