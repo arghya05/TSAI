@@ -4,9 +4,9 @@
 - [Results & Analysis](#results-analysis)
 - [CIFAR-10 Augmentation Vizulation](#cifar-10-augmentation-vizualization)
 - [Model Evaluation](#model-evaluation)
-  * [ResNet 18 Learning Curve](#resnet-18-learning-curve)
-  * [ResNet 18 Misclassified Images](#resnet-18-misclassified-images)
-  * [Grad-Cam ResNet 18](#gradcam-resnet18)
+  * [Custom-resnet Learning Curve](#Custom-resnet-learning-curve)
+  * [Custom-resnet Misclassified Images](#Custom-resnet-misclassified-images)
+  * [Grad-Cam Custom-resnet](#gradcam-Custom-resnet)
 - [Team Members](#team-members)
 
 
@@ -74,12 +74,12 @@ Augmentation Strategy Used
 # Model Evaluation
 
 We have plotted
-* ResNet 18 Learning Curve
-* ResNet 18 Misclassified Images
-* Grad-Cam ResNet 18
+* Custom resnet Learning Curve
+* Custom resnet Misclassified Images
+* Grad-Cam Custom resnet
 
 
-ResNet 18 Learning Curve
+Custom resnet Learning Curve
 --------------------------
 
 <p float="center">
@@ -87,7 +87,7 @@ ResNet 18 Learning Curve
 </p>
 
 
-ResNet 18 Misclassified Images
+Custom resnet Misclassified Images
 --------------------------
 
 <p float="center">
@@ -95,7 +95,7 @@ ResNet 18 Misclassified Images
 </p>
 
 
-GradCam ResNet18
+GradCam Custom resnet
 --------------------------
 
 <p float="center">
