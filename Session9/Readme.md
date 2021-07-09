@@ -42,7 +42,7 @@
 
 
 # Results Analysis
-Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session9/session-9.ipynb)
+Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session9/Session9.ipynb)
 
 Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
 - Test Accuracy : 88.00%
