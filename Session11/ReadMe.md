@@ -2,14 +2,8 @@
 
 - [Problem Statement](#problem-statement)
 - [Part 1](#part-1)
-- [Results & Analysis](#results-analysis)
-- [Data Vizulation](#tiny-image-net)
-- [Tiny Image Net 200 Augmentation Vizulation](#tiny-imagenet-200-augmentation-vizulation)
-- [Model Evaluation](#model-evaluation)
-  * [Custom-resnet Learning Curve](#resnet18-learning-curve)
-  * [Custom-resnet Misclassified Images](#resnet18-misclassified-images)
-  * [Training Logs Last 10 epcoh](#training-logs)
-- [Assignment B](#assignment-b)
+- [Results](#results)
+- [Part 2](#part-b)
 - [Problem Statement of Assignment B](#problem-statement-of-assignment-b)
 - [COCO DATASET](#coco-dataset)
 - [Refrences](#references)
@@ -44,111 +38,53 @@
 
 # Part 1
 
+**Poblem Statement:**
+
+- OpenCV YoloV3: [SOURCE](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/)
+     1. Run this above code on your laptop or Colab. 
+     2. Take an image of yourself, holding another object which is there in COCO data set (search for COCO classes to learn). 
+     3. Run this image through the code above. 
+     4. Upload the link to GitHub implementation of this
+     5. Upload the annotated image by YOLO. 
+ 
 - Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session11/S11P1.ipynb)
 
 
-## Tiny Image Net
-
-- **DataSet:** tiny Imagenet has **200 classes** of **64x64** images. Each class has 500 images in the training dataset
+Results
+------------
 
 <p float="center">
-  <img src="images/data.png" alt="drawing" width="650">
+ <img src="images/out1.png" alt="drawing" width="750">
 </p>
 
-## Tiny ImageNet 200 Augmentation Vizulation
+**Testing On More Images:**
 
 <p float="center">
-  <img src="images/aug.png" alt="drawing" width="650">
-</p>
-
-
-# Model Evaluation
-
-We have plotted
-* ResNet18 Learning Curve
-* ResNet18 Misclassified Images
-
-
-ResNet18 Learning Curve
---------------------------
-
-<p float="center">
-  <img src="images/lr.png" alt="drawing" width="650">
+ <img src="images/out3.png" alt="drawing">
+ <img src="images/out4.png" alt="drawing" width="950">
+ <img src="images/out2.png" alt="drawing">
 </p>
 
 
-ResNet18 Misclassified Images
---------------------------
+# Part 2
+**Poblem Statement:**
 
-<p float="center">
-  <img src="images/misclf.png" alt="drawing" height="600">
-</p>
-
-Training Logs
-----------
-
-```
-EPOCH: 41 (LR: 0.024985442450470904)
-Batch_id=273 Loss=0.26415 Accuracy=92.52%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.1290, Accuracy: 14962/30000 (49.87%)
-
-EPOCH: 42 (LR: 0.02059858656808367)
-Batch_id=273 Loss=0.23973 Accuracy=93.07%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.1563, Accuracy: 14925/30000 (49.75%)
-
-EPOCH: 43 (LR: 0.01653383520088566)
-Batch_id=273 Loss=0.22410 Accuracy=93.72%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.1600, Accuracy: 14990/30000 (49.97%)
-
-EPOCH: 44 (LR: 0.012835711791748522)
-Batch_id=273 Loss=0.21369 Accuracy=94.08%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.1778, Accuracy: 15018/30000 (50.06%)
-
-EPOCH: 45 (LR: 0.009544723907178754)
-Batch_id=273 Loss=0.20005 Accuracy=94.58%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.1830, Accuracy: 15046/30000 (50.15%)
-
-EPOCH: 46 (LR: 0.006696919535806679)
-Batch_id=273 Loss=0.19192 Accuracy=94.86%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.2010, Accuracy: 15041/30000 (50.14%)
-
-EPOCH: 47 (LR: 0.004323492235068956)
-Batch_id=273 Loss=0.18853 Accuracy=94.83%: 100%|██████████| 274/274 [04:47<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.1962, Accuracy: 15045/30000 (50.15%)
-
-EPOCH: 48 (LR: 0.002450439451128521)
-Batch_id=273 Loss=0.18120 Accuracy=95.06%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.1868, Accuracy: 15040/30000 (50.13%)
-
-EPOCH: 49 (LR: 0.0010982777546406704)
-Batch_id=273 Loss=0.18038 Accuracy=95.19%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-  0%|          | 0/274 [00:00<?, ?it/s]
-Test set: Average loss: 3.1999, Accuracy: 15038/30000 (50.13%)
-
-EPOCH: 50 (LR: 0.000281818111543607)
-Batch_id=273 Loss=0.17845 Accuracy=95.26%: 100%|██████████| 274/274 [04:46<00:00,  1.05s/it]
-Test set: Average loss: 3.2014, Accuracy: 15038/30000 (50.13%)
-```
-
-# Assignment B
-
-- To [NoteBook](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/Assignment_10_B.ipynb)
-- To [Excel Sheet](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/COCODataset.xlsx)
-
-# Problem Statement of Assignment B
-
-- Learn how COCO object detection dataset's schema is. This file has the same schema. You'll need to discover what those number are.
-- Identify these things for this dataset:
-     1. readme data for class distribution (along with the class names) along with a graph
-     2. Calculate the Anchor Boxes **using K Means** for k = 3, 4, 5, 6 and draw them.
+- Training Custom Dataset on Colab for YoloV3
+     1. Refer to this Colab File:  [LINK](https://colab.research.google.com/drive/1LbKkQf4hbIuiUHunLlvY-cc0d_sNcAgS)
+     2. Refer to this GitHub [Repo](https://github.com/theschoolofai/YoloV3)
+     3. Download this dataset (Links to an external site.). This was annotated by EVA5 Students. Collect and add 25 images for the following 4 classes into the dataset shared:
+           1. class names are in custom.names file. 
+           2. you must follow exact rules to make sure that you can train the model. Steps are explained in the README.md file on github repo link above.
+           3. Once you add your additional 100 images, train the model
+- Once done:
+      1. [Download](https://www.y2mate.com/en57) a very small (~10-30sec) video from youtube which shows your classes. 
+      2. Use [ffmpeg](https://en.wikibooks.org/wiki/FFMPEG_An_Intermediate_Guide/image_sequence) to extract frames from the video. 
+      3. Upload on your drive (alternatively you could be doing all of this on your drive to save upload time)
+      4. Infer on these images using detect.py file. **Modify** detect.py file if your file names do not match the ones mentioned on GitHub. 
+      python detect.py --conf-three 0.3 --output output_folder_name
+      5. Use  ffmpeg  to convert the files in your output folder to video
+      6. Upload the video to YouTube. 
+      7. Also run the model on 16 images that you have collected (4 for each class)
 
 # COCO DATASET
 The sample_coco.txt given for this assignment looks like this: id: 0, height: 330, width: 1093, bbox:[69, 464, 312, 175], id: 1, height: 782, width: 439, bbox:[359, 292, 83, 199], id: 3, height: 645, width: 831, bbox:[297, 312, 267, 167], id: 34, height: 943, width: 608, bbox:[275, 112, 319, 290], id: 20, height: 593, width: 857, bbox:[71, 368, 146, 147], id: 61, height: 587, width: 745, bbox:[177, 463, 68, 302],
