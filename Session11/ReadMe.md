@@ -1,7 +1,7 @@
 # Submission for Week 11
 
 - [Problem Statement](#problem-statement)
-- [Assignment A](#assignment-a)
+- [Part 1](#part-1)
 - [Results & Analysis](#results-analysis)
 - [Data Vizulation](#tiny-image-net)
 - [Tiny Image Net 200 Augmentation Vizulation](#tiny-imagenet-200-augmentation-vizulation)
@@ -17,51 +17,34 @@
 
 
 # Problem Statement
-1. Assignment A:
-   1. Download this [TINY IMAGENET ](http://cs231n.stanford.edu/tiny-imagenet-200.zip)dataset. 
-   2. Train ResNet18 on this dataset (70/30 split) for 50 Epochs. Target 50%+ Validation Accuracy. 
-   3. Submit Results. Of course, you are using your own package for everything. You can look at [this ](https://github.com/sonugiri1043/Train_ResNet_On_Tiny_ImageNet/blob/master/Train_ResNet_On_Tiny_ImageNet.ipynb) for reference. 
-2. Assignment B:
-   1.  Learn how COCO object detection dataset's schema is. This file has the same schema. You'll need to discover what those number are. 
-   2. Identify these things for this dataset:
-      1. readme data for class distribution (along with the class names) along with a graph 
-      2. Calculate the Anchor Boxes for k = 3, 4, 5, 6 and draw them.
+
+1. OpenCV Yolo: [SOURCE](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/)
+     1. Run this above code on your laptop or Colab. 
+     2. Take an image of yourself, holding another object which is there in COCO data set (search for COCO classes to learn). 
+     3. Run this image through the code above. 
+     4. Upload the link to GitHub implementation of this
+     5. Upload the annotated image by YOLO. 
+2. Training Custom Dataset on Colab for YoloV3
+     1. Refer to this Colab File:  [LINK](https://colab.research.google.com/drive/1LbKkQf4hbIuiUHunLlvY-cc0d_sNcAgS)
+     2. Refer to this GitHub [Repo](https://github.com/theschoolofai/YoloV3)
+     3. Download this dataset (Links to an external site.). This was annotated by EVA5 Students. Collect and add 25 images for the following 4 classes into the dataset shared:
+           1. class names are in custom.names file. 
+           2. you must follow exact rules to make sure that you can train the model. Steps are explained in the README.md file on github repo link above.
+           3. Once you add your additional 100 images, train the model
+3. Once done:
+      1. [Download](https://www.y2mate.com/en57) a very small (~10-30sec) video from youtube which shows your classes. 
+      2. Use [ffmpeg](https://en.wikibooks.org/wiki/FFMPEG_An_Intermediate_Guide/image_sequence) to extract frames from the video. 
+      3. Upload on your drive (alternatively you could be doing all of this on your drive to save upload time)
+      4. Infer on these images using detect.py file. **Modify** detect.py file if your file names do not match the ones mentioned on GitHub. 
+      python detect.py --conf-three 0.3 --output output_folder_name
+      5. Use  ffmpeg  to convert the files in your output folder to video
+      6. Upload the video to YouTube. 
+      7. Also run the model on 16 images that you have collected (4 for each class)
 
 
-# Assignment A
+# Part 1
 
-- Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20A/tiny_imagenet.ipynb)
-- Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
-
-## Results Analysis
-
-```
-Augmentation Used:
-  A.PadIfNeeded(min_height=76, min_width=76, always_apply=True),
-  A.RandomCrop(64,64),
-  A.Rotate(limit=15),
-  A.CoarseDropout(1,24, 24, 1, 8, 8,fill_value=mean*255., mask_fill_value=None),
-  A.VerticalFlip(),
-  A.HorizontalFlip(),
-  A.Normalize(mean, std),
-  ToTensorV2()
-```
-- Dataset Used: tiny ImageNet
-- Test Accuracy : 50.13% in 50 epochs reached at 44 epoch
-- Train Accuracy : 95.26%
-
-
-One Cycle Policy
-```
-scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, 
-                                                max_lr=1.0,
-                                                steps_per_epoch=len(train_loader), 
-                                                epochs=50,
-                                                pct_start=0.2,
-                                                div_factor=10,
-                                                three_phase=True, 
-                                                )
-```                                            
+- Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session11/S11P1.ipynb)
 
 
 ## Tiny Image Net
