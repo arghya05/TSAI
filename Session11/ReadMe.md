@@ -3,7 +3,7 @@
 - [Problem Statement](#problem-statement)
 - [Part 1](#part-1)
 - [Results](#results)
-- [Part 2](#part-b)
+- [Part 2](#part-2)
 - [Problem Statement of Assignment B](#problem-statement-of-assignment-b)
 - [COCO DATASET](#coco-dataset)
 - [Refrences](#references)
@@ -69,14 +69,14 @@ Results
 # Part 2
 **Poblem Statement:**
 
-- Training Custom Dataset on Colab for YoloV3
+1. Training Custom Dataset on Colab for YoloV3
      1. Refer to this Colab File:  [LINK](https://colab.research.google.com/drive/1LbKkQf4hbIuiUHunLlvY-cc0d_sNcAgS)
      2. Refer to this GitHub [Repo](https://github.com/theschoolofai/YoloV3)
      3. Download this dataset (Links to an external site.). This was annotated by EVA5 Students. Collect and add 25 images for the following 4 classes into the dataset shared:
            1. class names are in custom.names file. 
            2. you must follow exact rules to make sure that you can train the model. Steps are explained in the README.md file on github repo link above.
-           3. Once you add your additional 100 images, train the model
-- Once done:
+           3. Once you add your additional 100 images, train the model         
+2. Once done:
       1. [Download](https://www.y2mate.com/en57) a very small (~10-30sec) video from youtube which shows your classes. 
       2. Use [ffmpeg](https://en.wikibooks.org/wiki/FFMPEG_An_Intermediate_Guide/image_sequence) to extract frames from the video. 
       3. Upload on your drive (alternatively you could be doing all of this on your drive to save upload time)
@@ -103,8 +103,7 @@ Here is is the class id, followed by the height and width of the image. the boun
 References
 ------------------------
 
-* https://github.com/sonugiri1043/Train_ResNet_On_Tiny_ImageNet/blob/master/Train_ResNet_On_Tiny_ImageNet.ipynb
-* https://www.immersivelimit.com/tutorials/create-coco-annotations-from-scratch
+* https://github.com/theschoolofai/YoloV3
 
 
 Team Members
