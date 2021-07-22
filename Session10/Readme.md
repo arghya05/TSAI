@@ -9,6 +9,10 @@
   * [Custom-resnet Learning Curve](#resnet18-learning-curve)
   * [Custom-resnet Misclassified Images](#resnet18-misclassified-images)
   * [Training Logs Last 10 epcoh](#training-logs)
+- [Assignment B](#assignment-b)
+- [Problem Statement of Assignment B](#problem-statement-of-assignment-b)
+- [COCO DATASET](#coco-dataset)
+- [Refrences](#references)
 - [Team Members](#team-members)
 
 
@@ -151,10 +155,37 @@ Batch_id=273 Loss=0.17845 Accuracy=95.26%: 100%|██████████| 
 Test set: Average loss: 3.2014, Accuracy: 15038/30000 (50.13%)
 ```
 
+# Assignment B
+
+- To [NoteBook](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/Assignment_10_B.ipynb)
+- To [Excel Sheet](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/COCODataset.xlsx)
+
+# Problem Statement of Assignment B
+
+- Learn how COCO object detection dataset's schema is. This file has the same schema. You'll need to discover what those number are.
+- Identify these things for this dataset:
+     1. readme data for class distribution (along with the class names) along with a graph
+     2. Calculate the Anchor Boxes **using K Means** for k = 3, 4, 5, 6 and draw them.
+
+# COCO DATASET
+The sample_coco.txt given for this assignment looks like this: id: 0, height: 330, width: 1093, bbox:[69, 464, 312, 175], id: 1, height: 782, width: 439, bbox:[359, 292, 83, 199], id: 3, height: 645, width: 831, bbox:[297, 312, 267, 167], id: 34, height: 943, width: 608, bbox:[275, 112, 319, 290], id: 20, height: 593, width: 857, bbox:[71, 368, 146, 147], id: 61, height: 587, width: 745, bbox:[177, 463, 68, 302],
+
+Here is is the class id, followed by the height and width of the image. the bounding box (bbox). The COCO dataset defines the bounding box as x,y, width, height, where x and y is the vertex closer to origin.
+
+<p float="center">
+  <img src="Assignment B/images/anchorboxes.png" alt="drawing" width="650">
+</p>
+
+
+<p float="center">
+  <img src="Assignment B/images/excel_ss.png" alt="drawing" width="650">
+</p>
+
 References
 ------------------------
 
 * https://github.com/sonugiri1043/Train_ResNet_On_Tiny_ImageNet/blob/master/Train_ResNet_On_Tiny_ImageNet.ipynb
+* https://www.immersivelimit.com/tutorials/create-coco-annotations-from-scratch
 
 
 Team Members
