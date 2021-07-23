@@ -45,7 +45,7 @@ Given the weights and configuration for yolo, we ran inference using OpenCV func
 </p>
 
 
-# Part 2
+# Training YOLO
 **Problem Statement:**
 
 1. Training Custom Dataset on Colab for YoloV3
@@ -65,25 +65,16 @@ Given the weights and configuration for yolo, we ran inference using OpenCV func
       6. Upload the video to YouTube. 
       7. Also run the model on 16 images that you have collected (4 for each class)
 
-# COCO DATASET
-The sample_coco.txt given for this assignment looks like this: id: 0, height: 330, width: 1093, bbox:[69, 464, 312, 175], id: 1, height: 782, width: 439, bbox:[359, 292, 83, 199], id: 3, height: 645, width: 831, bbox:[297, 312, 267, 167], id: 34, height: 943, width: 608, bbox:[275, 112, 319, 290], id: 20, height: 593, width: 857, bbox:[71, 368, 146, 147], id: 61, height: 587, width: 745, bbox:[177, 463, 68, 302],
-
-Here is is the class id, followed by the height and width of the image. the bounding box (bbox). The COCO dataset defines the bounding box as x,y, width, height, where x and y is the vertex closer to origin.
-
-<p float="center">
-  <img src="Assignment B/images/anchorboxes.png" alt="drawing" width="650">
-</p>
-
-
-<p float="center">
-  <img src="Assignment B/images/excel_ss.png" alt="drawing" width="650">
-</p>
+We forked out of the schoolofai github and created out own for ease, [here](https://github.com/MittalNeha/YoloV3)
+Custom dataset was downloaded, annotated and uploaded to the YoloV3 repository. This is the [notebook](https://github.com/vivek-a81/EVA6/blob/main/Session11/Training_YOLO.ipynb) used to train this model.
+One of the test videos have been uploaded to youtube [link](https://youtu.be/K5zuxPn4BSo)
 
 References
 ------------------------
 
 * https://github.com/theschoolofai/YoloV3
 * https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/
+* https://colab.research.google.com/drive/1LbKkQf4hbIuiUHunLlvY-cc0d_sNcAgS
 
 
 Team Members
