@@ -4,7 +4,6 @@
 - [Results](#results)
 - [Part 2](#part-2)
 - [Problem Statement of Assignment B](#problem-statement-of-assignment-b)
-- [COCO DATASET](#coco-dataset)
 - [Refrences](#references)
 - [Team Members](#team-members)
 
@@ -66,8 +65,10 @@ Given the weights and configuration for yolo, we ran inference using OpenCV func
       7. Also run the model on 16 images that you have collected (4 for each class)
 
 We forked out of the schoolofai github and created out own for ease, [here](https://github.com/MittalNeha/YoloV3)
+
 Custom dataset was downloaded, annotated and uploaded to the YoloV3 repository. This is the [notebook](https://github.com/vivek-a81/EVA6/blob/main/Session11/Training_YOLO.ipynb) used to train this model.
-One of the test videos have been uploaded to youtube [link](https://youtu.be/K5zuxPn4BSo)
+
+One of the test videos have been uploaded to youtube [link](https://www.youtube.com/watch?v=K5zuxPn4BSo&ab_channel=NehaMittal)
 
 References
 ------------------------
