@@ -1,7 +1,6 @@
 # Submission for Week 11
 
-- [Problem Statement](#problem-statement)
-- [OpenCV Yolo](#part-1)
+- [OpenCV Yolo](##opencv-yolo)
 - [Results](#results)
 - [Part 2](#part-2)
 - [Problem Statement of Assignment B](#problem-statement-of-assignment-b)
@@ -27,6 +26,8 @@
 
 Results
 ------------
+Given the weights and configuration for yolo, we ran inference using OpenCV function "dnn.blobFromImage". Some of the resulting images are shown below along with the boundbox, identified label and the confidence score.
+
 **Testing On Our Images:**
 <p float="center">
  <img src="images/out1.png" alt="drawing" width="550">
