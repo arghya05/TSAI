@@ -35,9 +35,9 @@ id: 61, height: 587, width: 745, bbox:[177, 463, 68, 302],
 
 Here id is the class id, followed by the height and width of the image. the bounding box (bbox). The COCO dataset defines the bounding box as x,y, width, height, where x and y is the vertex closer to origin.
 
-This text file was imported in an excel and to calculate the normalized values for the bounding box. Link to the excel file is : []
+This text file was imported in an excel and to calculate the normalized values for the bounding box. Link to the excel file is : [](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/COCODataset.xlsx)
 
-<screenshot of the file>
+[screenshot](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/images/excel_ss.png)
 
 # Finding the Anchor Boxes
 
@@ -45,7 +45,8 @@ K means algorithm is used to find clusters in order to define Anchor boxes to be
 
 Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/Assignment_10_B.ipynb)
 
-
+This is how the bounding boxes look
+[](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/images/anchorboxes.png)
 
 References
 ------------------------
