@@ -19,15 +19,21 @@
 # Dataset - COCO
 The sample_coco.txt given for this assignment looks like this:
 id: 0, height: 330, width: 1093, bbox:[69, 464, 312, 175],
+
 id: 1, height: 782, width: 439, bbox:[359, 292, 83, 199],
+
 id: 3, height: 645, width: 831, bbox:[297, 312, 267, 167],
+
 id: 34, height: 943, width: 608, bbox:[275, 112, 319, 290],
+
 id: 20, height: 593, width: 857, bbox:[71, 368, 146, 147],
+
 id: 61, height: 587, width: 745, bbox:[177, 463, 68, 302],
 
 
 
-Here is is the class id, followed by the height and width of the image. the bounding box (bbox). The COCO dataset defines the bounding box as x,y, width, height, where x and y is the vertex closer to origin.
+
+Here id is the class id, followed by the height and width of the image. the bounding box (bbox). The COCO dataset defines the bounding box as x,y, width, height, where x and y is the vertex closer to origin.
 
 This text file was imported in an excel and to calculate the normalized values for the bounding box. Link to the excel file is : []
 
@@ -37,7 +43,7 @@ This text file was imported in an excel and to calculate the normalized values f
 
 K means algorithm is used to find clusters in order to define Anchor boxes to be used for classification. 
 
-Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session9/Session9.ipynb)
+Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session10/Assignment%20B/Assignment_10_B.ipynb)
 
 
 
