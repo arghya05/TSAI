@@ -25,7 +25,9 @@ As an example, we will consider the ViT-B/16 algorithm and CIFAR10 dataset. The 
 ```
 
 If we look at this animation: 
-![](images/image1.gif)
+<p float="left">
+ <img src="images/image1.gif" alt="drawing" width="400">
+</p>
 
 The main classes in this file are:
 
@@ -43,14 +45,18 @@ The main classes in this file are:
 - <u>MLP</u>: This is the class for the only layer that introduces non-linearity.
 - <u>Attention:</u> In this class, there are three Linear layers, one each for query, key and value. The output from query layer is multiplied by the transpose of the output from key layer. This normalized output passes through softmax and is then multiplied by the output of value_layer.
 
-![](images/attention.png)
+<p float="left">
+ <img src="images/attention.png" alt="drawing" width="200">
+</p>
 
 - <u>Block:</u> This class has two residual blocks.
 
          1. A Layer Normalization layer followed by the output of the Attention class output. This output added with the input as a residual connection.
          2. A Layer Normalization layer followed by the output of the MLP class output. 
 
-  ![](images/block.png)
+<p float="left">
+ <img src="images/block.png" alt="drawing" width="200">
+</p>
 
 - <u>Encoder:</u> Encoder is the 'num_layers' of Block appended one after the other, to create the Encoder layer.
 
