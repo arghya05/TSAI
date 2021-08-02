@@ -1,10 +1,11 @@
 # Submission for Week 12
 
 - [Problem Statement](#problem-statement)
-- [Results & Analysis](#results-analysis)
+- [Results](#results)
 - [Model Evaluation](#model-evaluation)
-  * [Custom-resnet Learning Curve](#Custom-resnet-learning-curve)
-  * [Custom-resnet Misclassified Images](#Custom-resnet-misclassified-images)
+  * [Training Logs](#training-logs)
+  * [Misclassified Images](#misclassified-images)
+  * [STN Vizulation](#stn-vizulation)
 - [Team Members](#team-members)
 
 
@@ -23,63 +24,94 @@
   - Encoder
 
 
-# Results Analysis
-Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session9/Session9.ipynb)
+# Results
 
-Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
-- Test Accuracy : 88.66%
-- Train Accuracy : 94.34%
-- LR finder was used to find the best accuracy and used as the lr_max in OneCycleLR
-- Adding L2 Regularisation boosted the performance of the model  
-LR Finder plot
-<p float="center">
-  <img src="images/lr-finder.png" alt="drawing" width="450" height="350">
-</p>
-Augmentation Strategy Used
-```
-     A.Sequential([
-                   A.CropAndPad(px=4, keep_size=False), #padding of 2, keep_size=True by defaulf
-                   A.RandomCrop(32,32)
-                   ]),
-     A.HorizontalFlip(),
-     A.CoarseDropout(1, 8, 8, 1, 8, 8,fill_value=0.473363, mask_fill_value=None),
-     A.Normalize((0.49139968, 0.48215841, 0.44653091), (0.24703223, 0.24348513, 0.26158784))
-```
-
-<p float="center">
-  <img src="images/lr-model-1.png" alt="drawing" width="350" height="250">
-</p>
-
+- Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session12/S12CIFAR10transformer.ipynb)
+- Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
+- Test Accuracy : 51.23%
+- Train Accuracy : 60.18%
 
 # Model Evaluation
 
-We have plotted
-* Custom resnet Learning Curve
-* Custom resnet Misclassified Images
+* Last 10 training logs
+* Misclassified Images
+* STN Vizulation
 
 
-Custom resnet Learning Curve
+Training Logs
+--------------------------
+
+* Here are last 10 logs
+```
+EPOCH: 40 (LR: 0.01)
+Batch_id=195 Loss=1.40958 Accuracy=49.62%: 100%|██████████| 196/196 [00:08<00:00, 24.37it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.1630, Accuracy: 6061/10000 (60.61%)
+
+EPOCH: 41 (LR: 0.01)
+Batch_id=195 Loss=1.39998 Accuracy=50.24%: 100%|██████████| 196/196 [00:08<00:00, 24.27it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.1569, Accuracy: 5998/10000 (59.98%)
+
+EPOCH: 42 (LR: 0.01)
+Batch_id=195 Loss=1.40912 Accuracy=49.65%: 100%|██████████| 196/196 [00:08<00:00, 22.54it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.2076, Accuracy: 5833/10000 (58.33%)
+
+EPOCH: 43 (LR: 0.01)
+Batch_id=195 Loss=1.38702 Accuracy=50.33%: 100%|██████████| 196/196 [00:08<00:00, 22.76it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.1455, Accuracy: 6032/10000 (60.32%)
+
+EPOCH: 44 (LR: 0.01)
+Batch_id=195 Loss=1.38077 Accuracy=50.87%: 100%|██████████| 196/196 [00:08<00:00, 23.77it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.1558, Accuracy: 5925/10000 (59.25%)
+
+EPOCH: 45 (LR: 0.01)
+Batch_id=195 Loss=1.39234 Accuracy=50.13%: 100%|██████████| 196/196 [00:08<00:00, 22.64it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.4079, Accuracy: 4982/10000 (49.82%)
+
+EPOCH: 46 (LR: 0.01)
+Batch_id=195 Loss=1.41334 Accuracy=49.60%: 100%|██████████| 196/196 [00:08<00:00, 22.61it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.2168, Accuracy: 5763/10000 (57.63%)
+
+EPOCH: 47 (LR: 0.01)
+Batch_id=195 Loss=1.38242 Accuracy=50.73%: 100%|██████████| 196/196 [00:08<00:00, 23.44it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.1460, Accuracy: 5992/10000 (59.92%)
+
+EPOCH: 48 (LR: 0.01)
+Batch_id=195 Loss=1.38006 Accuracy=50.90%: 100%|██████████| 196/196 [00:08<00:00, 23.94it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.4068, Accuracy: 4923/10000 (49.23%)
+
+EPOCH: 49 (LR: 0.01)
+Batch_id=195 Loss=1.40337 Accuracy=50.06%: 100%|██████████| 196/196 [00:08<00:00, 24.12it/s]
+  0%|          | 0/196 [00:00<?, ?it/s]
+Test set: Average loss: 1.1414, Accuracy: 5983/10000 (59.83%)
+
+EPOCH: 50 (LR: 0.01)
+Batch_id=195 Loss=1.36774 Accuracy=51.23%: 100%|██████████| 196/196 [00:08<00:00, 23.78it/s]
+Test set: Average loss: 1.1450, Accuracy: 6018/10000 (60.18%)
+```
+
+Misclassified Images
 --------------------------
 
 <p float="center">
-  <img src="images/ler_cur.png" alt="drawing" width="750">
+  <img src="images/misclfpng.png" alt="drawing" height="550">
 </p>
 
-
-Custom resnet Misclassified Images
---------------------------
-
+STN Vizulation
+----------------
+Click to view image
 <p float="center">
-  <img src="images/mis_clf.png" alt="drawing" height="550">
+  <img src="images/stn.png" alt="drawing" height="850">
 </p>
 
-
-References
-------------------------
-
-* https://github.com/davidtvs/pytorch-lr-finder
-* https://stackoverflow.com/questions/54553388/have-i-implemented-implemenation-of-learning-rate-finder-correctly
-* https://discuss.pytorch.org/t/get-the-best-learning-rate-automatically/58269
 
 
 Team Members
