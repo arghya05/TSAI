@@ -25,7 +25,7 @@ As an example, we will consider the ViT-B/16 algorithm and CIFAR10 dataset. The 
 ```
 
 If we look at this animation: 
-![](images\Understanding ViT\image1.gif)
+![](images/image1.gif)
 
 The main classes in this file are:
 
@@ -43,14 +43,14 @@ The main classes in this file are:
 - <u>MLP</u>: This is the class for the only layer that introduces non-linearity.
 - <u>Attention:</u> In this class, there are three Linear layers, one each for query, key and value. The output from query layer is multiplied by the transpose of the output from key layer. This normalized output passes through softmax and is then multiplied by the output of value_layer.
 
-![](C:\Work\EVA6\EVA6\Session12\images\Understanding ViT\attention.png)
+![](images/attention.png)
 
 - <u>Block:</u> This class has two residual blocks.
 
          1. A Layer Normalization layer followed by the output of the Attention class output. This output added with the input as a residual connection.
          2. A Layer Normalization layer followed by the output of the MLP class output. 
 
-  ![](C:\Work\EVA6\EVA6\Session12\images\Understanding ViT\block.png)
+  ![](images/block.png)
 
 - <u>Encoder:</u> Encoder is the 'num_layers' of Block appended one after the other, to create the Encoder layer.
 
