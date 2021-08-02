@@ -25,7 +25,7 @@ As an example, we will consider the ViT-B/16 algorithm and CIFAR10 dataset. The 
 ```
 
 If we look at this animation: 
-![](C:\Work\EVA6\EVA6\Session12\images\Understanding ViT\image1.gif)
+![](images\Understanding ViT\image1.gif)
 
 The main classes in this file are:
 
