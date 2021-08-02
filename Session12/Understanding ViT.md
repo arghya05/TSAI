@@ -26,7 +26,9 @@ If we look at this annimation:
 
 The main classes in this file are:
 
-- Block
+- Block: This class has two residual blocks.
+      1. a Layer Normalization layer followed by the output of the Attention class output. This output added with the input as a residual connection.
+      2. a Layer Normalization layer followed by the output of the MLP class output. 
 - Embeddings: This class is used to take the image input and give out the 9+1 enbedding outputs as per the gif shown above. The output form the operations in this class is an embedding that comprices of two chief elements: patch_embeddings and position_embeddings. 
 patch_embeddings are obtained by passing the input image through a Conv2d layer.
   Conv2d(in_channels=in_channels,
@@ -39,7 +41,7 @@ Conv2d(3, 768, (16,16), (16,16)). Another variable, n_patches=2x2 = 4
     
 position_embeddings is a Tensor of size (1,4+1,768). Here the +1 is for the cls_token(classification token) which is also initialized with zeros and isthen learnt along with the network.
     
-- MLP
-- Attention
-- Encoder
+- MLP: This is the class for the only layer that introduces non-linearity.
+- Attention: In this class, there are three Linear layers, one each for query, key and value. The output from query layer is multiplied by the transpose of the output from key layer. This normalized output passes through softmax and is then multiplied by the output of value_layer.
+- Encoder: 
 
