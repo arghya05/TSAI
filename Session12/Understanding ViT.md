@@ -46,7 +46,7 @@ The main classes in this file are:
 - <u>Attention:</u> In this class, there are three Linear layers, one each for query, key and value. The output from query layer is multiplied by the transpose of the output from key layer. This normalized output passes through softmax and is then multiplied by the output of value_layer.
 
 <p float="left">
- <img src="images/attention.png" alt="drawing" width="200">
+ <img src="images/attention.png" alt="drawing" width="400">
 </p>
 
 - <u>Block:</u> This class has two residual blocks.
@@ -55,7 +55,7 @@ The main classes in this file are:
          2. A Layer Normalization layer followed by the output of the MLP class output. 
 
 <p float="left">
- <img src="images/block.png" alt="drawing" width="200">
+ <img src="images/block.png" alt="drawing" width="400">
 </p>
 
 - <u>Encoder:</u> Encoder is the 'num_layers' of Block appended one after the other, to create the Encoder layer.
