@@ -36,8 +36,21 @@ Let's review this [blog](https://analyticsindiamag.com/hands-on-vision-transform
 
 # Model Evaluation
 
-* Last 5 epoch training logs
-* Lr Curve
+The blogger has used a "Linformer: Self-Attention with Linear Complexity". The network used in this paper uses Efficient Attention, which is a memory efficient form of Self Attention.
+<p float="center">
+  <img src="images/Untitled.png" alt="drawing" height="250">
+</p>
+
+`model = ViT(`  `dim=128,`
+  `image_size=224,`
+  `patch_size=32,`
+  `num_classes=2,`
+  `transformer=efficient_transformer,`
+  `channels=3,`
+`).to(device)`
+
+In this implementation, the patch_size used is 32x32. Since the input image is 224x224, there will be 7x7 patches. Hence, the dimensions of positional embeddings will be (7x7 + 1)x(32x32x3) = 50x3072
+
 
 
 Training Logs
