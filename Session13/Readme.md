@@ -5,7 +5,6 @@
 - [Model Evaluation](#model-evaluation)
   * [Training Logs last 5 epoch](#training-logs)
   * [Learning Curve](#learning-curve)
-  * [Misclassified Images](#misclassified-images)
 - [Team Members](#team-members)
 - [Vision Transformers Implementation](https://github.com/vivek-a81/EVA6/blob/main/Session13/VIT/ReadMe.md)
 
@@ -38,7 +37,6 @@ Let's review this [blog](https://analyticsindiamag.com/hands-on-vision-transform
 # Model Evaluation
 
 * Last 5 epoch training logs
-* Misclassified Images
 * Lr Curve
 
 
@@ -66,12 +64,6 @@ HBox(children=(FloatProgress(value=0.0, max=313.0), HTML(value='')))
 Epoch : 50 - loss : 0.5467 - acc: 0.7163 - val_loss : 0.5556 - val_acc: 0.7100
 ```
 
-Misclassified Images
---------------------------
-
-<p float="center">
-  <img src="images/misclfpng.png" alt="drawing" height="550">
-</p>
 
 Learning Curve
 ----------------
