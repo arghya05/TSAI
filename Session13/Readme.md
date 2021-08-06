@@ -31,7 +31,7 @@ Let's review this [blog](https://analyticsindiamag.com/hands-on-vision-transform
 
 
 <p float="center">
-  <img src="images/datapng.png" alt="drawing" height="850">
+  <img src="images/datapng.png" alt="drawing">
 </p>
 
 
@@ -77,7 +77,7 @@ Learning Curve
 ----------------
 
 <p float="center">
-  <img src="images/lrcurvepng.png" alt="drawing" height="850">
+  <img src="images/lrcurvepng.png" alt="drawing" height="350">
 </p>
 
 
