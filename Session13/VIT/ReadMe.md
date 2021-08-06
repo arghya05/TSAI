@@ -19,7 +19,7 @@ The overall architecture can be described easily in five simple steps:
 - Pass the representations of [CLS] tokens through an MLP Head to get final class predictions. 
 
 <p float="center">
- <img src="images/vit-01.png" alt="drawing">
+ <img src="https://github.com/vivek-a81/EVA6/blob/main/Session13/images/vit-01.png" alt="drawing">
 </p>
 
 
@@ -108,7 +108,7 @@ After the low-dimensional linear projection, a trainable position embedding is a
 It is interesting to see what these position embeddings look like after training:
 
 <p float="center">
- <img src="images/visualizing-positional-encodings-vit.png" alt="drawing">
+ <img src="https://github.com/vivek-a81/EVA6/blob/main/Session13/images/visualizing-positional-encodings-vit.png" alt="drawing">
 </p>
 
 The configuration values are also inputed to class which contains all the information regrading input size, dropout value, hidden state, embeddings etc.
@@ -116,13 +116,13 @@ The input image is converted to patch embeddings then class embeddings are conca
 the positional embeddings are added to each and every patch in the patch.
 
 <p float="center">
- <img src="images/vit-03.png" alt="drawing">
+ <img src="https://github.com/vivek-a81/EVA6/blob/main/Session13/images/vit-03.png" alt="drawing">
 </p>
 
 ### Transformer Encoder
 
 <p float="center">
- <img src="images/vit-07.png" alt="drawing">
+ <img src="https://github.com/vivek-a81/EVA6/blob/main/Session13/images/vit-07.png" alt="drawing">
 </p>
 
 Transformer encoder works in the following steps:
