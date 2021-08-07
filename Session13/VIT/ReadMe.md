@@ -427,7 +427,5 @@ logits = classifier(pooled_output)
 - https://arxiv.org/abs/2010.11929
 - https://ai.googleblog.com/2020/12/transformers-for-image-recognition-at.html
 - https://youtu.be/TQQlZhbC5ps
-- https://www.youtube.com/watch?v=HZ4j_U3FC94
-- https://www.youtube.com/watch?v=dichIcUZfOw
 - https://arxiv.org/pdf/2104.11178v1.pdf
 - https://kazemnejad.com/blog/transformer_architecture_positional_encoding/
