@@ -1,12 +1,11 @@
-# Submission for Week 13
+# Submission for Week 14
 
 - [Problem Statement](#problem-statement)
-- [Results](#results)
-- [Model Evaluation](#model-evaluation)
-  * [Training Logs last 5 epoch](#training-logs)
-  * [Learning Curve](#learning-curve)
+- [DETR](#detr--detection-transform)
+- [Encoder Decoder Architecture](#encoder-decoder-architecture)
+- [Bipartite Loss](#bipartite-loss)
+- [Object Queries](#object-queries)
 - [Team Members](#team-members)
-- [Vision Transformers Implementation](https://github.com/vivek-a81/EVA6/blob/main/Session13/VIT/ReadMe.md)
 
 
 # Problem Statement
