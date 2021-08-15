@@ -28,7 +28,7 @@
 
 The DEtection TRansformer (DETR) is an object detection model, developed by Facebook Research. It utilizes Transformers with a backbone of ResNet50. DETR predicts all all objects at once and is trained end-to-end with a set loss function which performs bipartite matching between predicted and ground-truth objects. Unlike most existing detection methods, DETR doesn't  require any customized layers and can be reproduced easily in any framework that contains standard CNN and transformer classes. 
 
-<p float="center">
+<p align="center">
   <img src="images/architecture.png" alt="drawing">
 </p>
 
@@ -43,7 +43,7 @@ Here is a summary of how DETR works:
 
 # Encoder-Decoder Architecture
 
-<p float="center">
+<p align="center">
   <img src="images/transformer.png" alt="drawing">
 </p>
 
@@ -63,7 +63,7 @@ Bipartite matching is one to one matching. In case of DETR, the output is not or
 They are "additional inputs" to the decoder. These are the 100 learned vectors, that finally result in 100 bounding boxes! (DETR can at max detect 100 boxes). These 100 vectors/encodings, are somewhat similar to Anchor Boxes, but unlike them, these are not learning the sizes, but the location of these boxes. The 100 object queries are transformed into an output embedding by the decoder. They are then independently decoded into box coordinates and class labels by a feed forward network. 
 
 
-<p float="center">
+<p align="center">
   <img src="images/ObjectQueries.png" alt="drawing">
 </p>
 
@@ -73,13 +73,13 @@ Here the above picture there are 20 out of 100 object quaires shown, each of the
 
 After training here are some of the test images from the trained model
 
-<p float="center">
+<p align="center">
   <img src="images/results_1.png" alt="drawing">
 </p>
 
 
 
-<p float="center">
+<p align="center">
   <img src="images/results_2.png" alt="drawing">
 </p>
 
