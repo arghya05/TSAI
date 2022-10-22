@@ -1,0 +1,9 @@
+tmp.py
+.nfs*
+*.ipynb
+*.pyc
+.DS_Store
+**/__pycache__/**
+.vscode
+*gz
+*.pt
