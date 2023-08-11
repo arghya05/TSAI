@@ -11,7 +11,7 @@ RUN pip3 install --no-cache-dir -U pip && \
     pip3 install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime
-FROM python:3.7-slim-buster 
+FROM python:3.7-slim-buster
 
 COPY --from=build /venv /venv
 ENV PATH=/venv/bin:$PATH

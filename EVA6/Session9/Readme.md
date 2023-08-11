@@ -4,30 +4,30 @@
 - [Results & Analysis](#results-analysis)
 - [CIFAR-10 Augmentation Vizulation](#cifar-10-augmentation-vizualization)
 - [Model Evaluation](#model-evaluation)
-  * [Custom-resnet Learning Curve](#Custom-resnet-learning-curve)
-  * [Custom-resnet Misclassified Images](#Custom-resnet-misclassified-images)
+  - [Custom-resnet Learning Curve](#Custom-resnet-learning-curve)
+  - [Custom-resnet Misclassified Images](#Custom-resnet-misclassified-images)
 - [Team Members](#team-members)
 
-
 # Problem Statement
+
 - - **Write a custom ResNet architecture for CIFAR10 that has the following architecture:**
-  - PrepLayer - Conv 3x3 s1, p1) >> BN >> RELU [64k]
+  - PrepLayer - Conv 3x3 s1, p1) >> BN >> RELU \[64k\]
   - Layer1 -
-    - X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [128k]
-    - R1 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [128k] 
+    - X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU \[128k\]
+    - R1 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) \[128k\]
     - Add(X, R1)
   - Layer 2 -
-    - Conv 3x3 [256k]
+    - Conv 3x3 \[256k\]
     - MaxPooling2D
     - BN
     - ReLU
   - Layer 3 -
-    - X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [512k]
-    - R2 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [512k]
+    - X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU \[512k\]
+    - R2 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) \[512k\]
     - Add(X, R2)
-   - MaxPooling with Kernel Size 4
-   - FC Layer 
-   - SoftMax
+  - MaxPooling with Kernel Size 4
+  - FC Layer
+  - SoftMax
   - Uses One Cycle Policy such that:
   - Total Epochs = 24
   - Max at Epoch = 5
@@ -36,18 +36,20 @@
   - NO Annihilation
   - Uses this transform -RandomCrop 32, 32 (after padding of 4) >> FlipLR >> Followed by CutOut(8, 8)
   - Batch size = 512
- - Target Accuracy: 90% (93% for late submission or double scores). 
-
+- Target Accuracy: 90% (93% for late submission or double scores).
 
 # Results Analysis
+
 Link to [Notebook](https://github.com/vivek-a81/EVA6/blob/main/Session9/Session9.ipynb)
 
 Link to [Main Repo](https://github.com/MittalNeha/vision_pytorch)
+
 - Test Accuracy : 88.66%
 - Train Accuracy : 94.34%
 - LR finder was used to find the best accuracy and used as the lr_max in OneCycleLR
-- Adding L2 Regularisation boosted the performance of the model  
-LR Finder plot
+- Adding L2 Regularisation boosted the performance of the model
+  LR Finder plot
+
 <p float="center">
   <img src="images/lr-finder.png" alt="drawing" width="450" height="350">
 </p>
@@ -63,15 +65,15 @@ Augmentation Strategy Used
 ```
 One Cycle Policy
 ```
-scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, 
+scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer,
                                                 max_lr=ler_rate/10,
-                                                steps_per_epoch=len(train_loader), 
+                                                steps_per_epoch=len(train_loader),
                                                 epochs=24,
                                                 pct_start=0.2,
                                                 div_factor=10,
-                                                three_phase=False, 
+                                                three_phase=False,
                                                 anneal_strategy='linear'
-                                                ) 
+                                                )
 ```
 <p float="center">
   <img src="images/lr-model-1.png" alt="drawing" width="350" height="250">
@@ -85,40 +87,31 @@ scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer,
   <img src="images/aug.png" alt="drawing" width="650" height="550">
 </p>
 
-
 # Model Evaluation
 
 We have plotted
-* Custom resnet Learning Curve
-* Custom resnet Misclassified Images
 
+- Custom resnet Learning Curve
+- Custom resnet Misclassified Images
 
-Custom resnet Learning Curve
---------------------------
+## Custom resnet Learning Curve
 
 <p float="center">
   <img src="images/ler_cur.png" alt="drawing" width="750">
 </p>
 
-
-Custom resnet Misclassified Images
---------------------------
+## Custom resnet Misclassified Images
 
 <p float="center">
   <img src="images/mis_clf.png" alt="drawing" height="550">
 </p>
 
+## References
 
-References
-------------------------
+- https://github.com/davidtvs/pytorch-lr-finder
+- https://stackoverflow.com/questions/54553388/have-i-implemented-implemenation-of-learning-rate-finder-correctly
+- https://discuss.pytorch.org/t/get-the-best-learning-rate-automatically/58269
 
-* https://github.com/davidtvs/pytorch-lr-finder
-* https://stackoverflow.com/questions/54553388/have-i-implemented-implemenation-of-learning-rate-finder-correctly
-* https://discuss.pytorch.org/t/get-the-best-learning-rate-automatically/58269
-
-
-Team Members
-------------------------
+## Team Members
 
 Neha Mittal, Vivek Chaudhary
-

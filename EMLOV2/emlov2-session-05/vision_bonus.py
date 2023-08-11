@@ -3,14 +3,12 @@ from datetime import datetime
 from typing import List, Tuple
 
 import boto3
-import torch
 import gradio as gr
-
+import torch
 from utils import CustomFlagging
 
 
 def main(model_path: str) -> Tuple[dict, dict]:
-
     model = torch.jit.load(model_path)
 
     classes = (
@@ -38,7 +36,7 @@ def main(model_path: str) -> Tuple[dict, dict]:
         et = datetime.now()
         print(out)
 
-        inf_time = (et - st).total_seconds() * 10 ** 3
+        inf_time = (et - st).total_seconds() * 10**3
         flag_callback.flag(
             im=im,
             output=out,
@@ -61,11 +59,8 @@ def main(model_path: str) -> Tuple[dict, dict]:
 
 
 if __name__ == "__main__":
-
     _, _, MODEL_BUCKET, MODEL_DIR, MODEL_NAME = os.environ.get("model").split("/")
-    _, _, OUTPUT_BUCKET, OUTPUT_DIR, FLAGGED_DIR = os.environ.get("flagged_dir").split(
-        "/"
-    )
+    _, _, OUTPUT_BUCKET, OUTPUT_DIR, FLAGGED_DIR = os.environ.get("flagged_dir").split("/")
 
     print(MODEL_BUCKET, MODEL_DIR, MODEL_NAME)
     print(OUTPUT_BUCKET, OUTPUT_DIR, FLAGGED_DIR)

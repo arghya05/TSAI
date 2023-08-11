@@ -57,7 +57,7 @@ class CIFAR10LitModule(LightningModule):
     def forward_jit(self, x: torch.Tensor):
         with torch.no_grad():
             # transform the inputs
-            x = x.permute(0,3,1,2).div(255.)
+            x = x.permute(0, 3, 1, 2).div(255.0)
             x = self.predict_transform(x)
             # forward pass
             logits = self.net(x)
@@ -107,9 +107,7 @@ class CIFAR10LitModule(LightningModule):
     def validation_epoch_end(self, outputs: List[Any]):
         acc = self.val_acc.compute()  # get val accuracy from current epoch
         self.val_acc_best.update(acc)
-        self.log(
-            "val/acc_best", self.val_acc_best.compute(), on_epoch=True, prog_bar=True
-        )
+        self.log("val/acc_best", self.val_acc_best.compute(), on_epoch=True, prog_bar=True)
         self.val_acc.reset()
         val_loss = sum(i["loss"] for i in outputs) / len(outputs)
 

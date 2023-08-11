@@ -2,12 +2,11 @@ import os
 from typing import List, Tuple
 
 import boto3
-import torch
 import gradio as gr
+import torch
 
 
 def main(model_path: str) -> Tuple[dict, dict]:
-
     model = torch.jit.load(model_path)
 
     classes = (
@@ -49,7 +48,6 @@ def main(model_path: str) -> Tuple[dict, dict]:
 
 
 if __name__ == "__main__":
-
     MODEL_NAME = "model.traced.pt"
     if not os.path.exists(MODEL_NAME):
         print("[INFO] Downloading model from S3 Bucket..")

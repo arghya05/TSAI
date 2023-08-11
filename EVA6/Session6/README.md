@@ -1,14 +1,14 @@
 # Submission for Week 6
+
 - [Problem Statement](#problem-statement)
 - [Our Model](#our-model)
-    + [Results](#results)
+  - [Results](#results)
   * [Understanding Normalization](#understanding-normalization)
   * [Findings on Normalization](#findings-on-normalization)
   * [Sample Calculations For Normalization](#sample-calculations-for-normalization)
   * [Train and Test Graphs](#train-and-test-graphs)
   * [Misclassified Images](#misclassified-images)
- - [Team Members](#team-members)
-
+- [Team Members](#team-members)
 
 # Problem Statement
 
@@ -18,16 +18,15 @@ You are making 3 versions of your 5th assignment's best model (or pick one from 
 2. Network with Layer Normalization + L2
 3. Network with L1 + L2 + BN
 
-
 # Our Model
 
 ### Results
 
-| Model | Training Acc | Train Loss | Testing Acc | Testing Loss | Error Rate |
-| :----: | :----: | :----: | :----: | :----: | :----: |
-| **GN + L1** | 99.44 | 0.01879 | 99.46 | 0.0185 | 0.54% |
-| **LN + L2** | 99.46 | 0.018 | **99.55** | **0.0154** | **0.45%**|
-| **BN + L1 + L2** | 99.43 | 0.0189 | 99.48 | 0.0187 | 0.62% |
+|      Model       | Training Acc | Train Loss | Testing Acc | Testing Loss | Error Rate |
+| :--------------: | :----------: | :--------: | :---------: | :----------: | :--------: |
+|   **GN + L1**    |    99.44     |  0.01879   |    99.46    |    0.0185    |   0.54%    |
+|   **LN + L2**    |    99.46     |   0.018    |  **99.55**  |  **0.0154**  | **0.45%**  |
+| **BN + L1 + L2** |    99.43     |   0.0189   |    99.48    |    0.0187    |   0.62%    |
 
 The link to the notebook (with the results) is [here](https://github.com/vivek-a81/EVA6/blob/main/Session6/Sess6_finalCode.ipynb)
 ![](images/SESS6.png)
@@ -38,13 +37,13 @@ Our Module class Net() takes a parameter for normalization. For example:
 
 the values for norm can be:
 
-    'bn': Batch Normalization
-    
-    'gn': Group Normalization
-    
-    'ln': Layer Normalization
+```
+'bn': Batch Normalization
 
+'gn': Group Normalization
 
+'ln': Layer Normalization
+```
 
 The norm_layer is defined using a function that decides which normalization to use
 
@@ -60,18 +59,15 @@ def normalize(x, w, h):
     	return None
 ```
 
-
 ## Understanding Normalization
 
 ![](images/normalization1.png)
 
-
-| Normalization type | How it works	| Where to use	| Observations |
-| :------: | :-------: |:-------: | :-------: |
-| **Group Normalization** |	Create group of channels, and normalize each group | computation is independent of batch sizes | Training started with underfitted model but after few epochs the training got stable. The difference between training accuracy and testing accuracy was comparatively less. Experiment were conducted using 2 and 4 groups, 4 showed better result. |
-| **Layer Normalization** |	Normalizes all the activation of single layers. | potential of normalizing the hidden states. |	Compared to group normalization the distance between training and testing accuracy was larger. But at the end the training logs are better compare to group normalization. |
-| **Batch Normalization**	| Normalizes the layers input rescaling and re-centering the images. | popular methods | low dropout value was better than no dropout at all |
-
+|   Normalization type    |                            How it works                            |                Where to use                 |                                                                                                                    Observations                                                                                                                     |
+| :---------------------: | :----------------------------------------------------------------: | :-----------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| **Group Normalization** |         Create group of channels, and normalize each group         |  computation is independent of batch sizes  | Training started with underfitted model but after few epochs the training got stable. The difference between training accuracy and testing accuracy was comparatively less. Experiment were conducted using 2 and 4 groups, 4 showed better result. |
+| **Layer Normalization** |          Normalizes all the activation of single layers.           | potential of normalizing the hidden states. |                                     Compared to group normalization the distance between training and testing accuracy was larger. But at the end the training logs are better compare to group normalization.                                      |
+| **Batch Normalization** | Normalizes the layers input rescaling and re-centering the images. |               popular methods               |                                                                                                 low dropout value was better than no dropout at all                                                                                                 |
 
 ## Findings on Normalization
 
@@ -84,11 +80,11 @@ We performed a number of experiments with different combinations of Normalizatio
 
 On comparing GN, BN, LN Batch Norm gave the better numbers
 
-|      | Test Accuracy | Test loss | Error Rate |
-| ---- | :-----------: | :-------: | :--------: |
-| BN   |   *99.39%*    | *0.0205*  |   *0.69*   |
-| LN   |     99.2%     |  0.0280   |    0.80    |
-| GN   |    99.02%     |  0.0321   |    0.85    |
+|     | Test Accuracy | Test loss | Error Rate |
+| --- | :-----------: | :-------: | :--------: |
+| BN  |   *99.39%*    | *0.0205*  |   *0.69*   |
+| LN  |     99.2%     |  0.0280   |    0.80    |
+| GN  |    99.02%     |  0.0321   |    0.85    |
 
 Further to see the effect of L1 and L2 Norm, below combinations were tried in the [notebook](https://github.com/vivek-a81/EVA6/blob/main/Session6/Experiment/Sess6_Experiments.ipynb) for 15 epochs each.
 
@@ -107,9 +103,9 @@ Further to see the effect of L1 and L2 Norm, below combinations were tried in th
 | BN + L2          |    99.31%     |  0.0212   |    0.69    |
 | **BN + L1 + L2** |   *99.43%*    |  0.0183   |   *0.57*   |
 
-It is very clear from this table that ***until 15 epochs, the model with Batch Normalization was performing the best***. But perhaps, it had saturated and on further training, the other Normalizations improved the model more. The testing error rate is another number that is giving a good intuition about the models. 
+It is very clear from this table that ***until 15 epochs, the model with Batch Normalization was performing the best***. But perhaps, it had saturated and on further training, the other Normalizations improved the model more. The testing error rate is another number that is giving a good intuition about the models.
 
-## Sample Calculations For Normalization 
+## Sample Calculations For Normalization
 
 This excel gives a good intuition about how the various  techniques work. The calculations were done for a batch size of 4. Below is the snapshot of the calculations performed on sample image inputs
 [Link to Excel](https://github.com/vivek-a81/EVA6/blob/main/Session6/Normalization%20Calculations.xlsx)
@@ -121,13 +117,13 @@ This excel gives a good intuition about how the various  techniques work. The ca
 ![](images/final_graph.png)
 
 ## Misclassified Images
+
 Below are the misclassified images from the three versions of the model. It was observed that some of these images would likely be wrongly identified even by a human.
 **Click on the image to see in better resolution.**
 
-|GN + L1|LN+L2|BN+L1+L2|
-| ------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| GN + L1                          | LN+L2                    | BN+L1+L2                 |
+| -------------------------------- | ------------------------ | ------------------------ |
 | ![final_gn](images/final_gn.png) | ![](images/final_ln.png) | ![](images/final_bn.png) |
-
 
 # Team Members
 

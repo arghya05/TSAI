@@ -1,16 +1,14 @@
-import os
 import json
+import os
 from io import BytesIO
-
 from typing import Any
-from cog import BasePredictor, Input, Path
 
 import requests
+from cog import BasePredictor, Input, Path
 from PIL import Image
 from timm.models import create_model
 from torch.nn.functional import softmax
 from torchvision import transforms
-
 
 IMAGENET_DEFAULT_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_DEFAULT_STD = (0.229, 0.224, 0.225)
@@ -18,9 +16,9 @@ IMAGENET_DEFAULT_STD = (0.229, 0.224, 0.225)
 
 class Predictor(BasePredictor):
     def setup(self):
-        """Load the model into memory to make running multiple predictions efficient"""
+        """Load the model into memory to make running multiple predictions efficient."""
 
-        self.labels2class = json.load(open("imagenet1000_labels.json", "r"))
+        self.labels2class = json.load(open("imagenet1000_labels.json"))
         self.augs = transforms.Compose(
             [
                 transforms.Resize((224, 224)),
@@ -32,7 +30,7 @@ class Predictor(BasePredictor):
 
     # Define the arguments and types the model takes as input
     def predict(self, image: Path = Input(description="Image to classify")) -> Any:
-        """Run a single prediction on the model"""
+        """Run a single prediction on the model."""
 
         img = Image.open(image).convert("RGB")
 

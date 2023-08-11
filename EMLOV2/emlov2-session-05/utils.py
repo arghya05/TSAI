@@ -50,19 +50,13 @@ class CustomFlagging:
             writer.writerows([flag_data])
 
     def push_to_s3(self, s3, upload_bucket: str, upload_path: str):
-        with open(self.logs_path, "r") as f:
+        with open(self.logs_path) as f:
             for line in csv.DictReader(f):
                 data = line
 
-        s3.upload_file(
-            data["image"], upload_bucket, os.path.join(upload_path, data["image"])
-        )
-        s3.upload_file(
-            data["output"], upload_bucket, os.path.join(upload_path, data["output"])
-        )
-        s3.upload_file(
-            self.logs_path, upload_bucket, os.path.join(upload_path, self.logs_path)
-        )
+        s3.upload_file(data["image"], upload_bucket, os.path.join(upload_path, data["image"]))
+        s3.upload_file(data["output"], upload_bucket, os.path.join(upload_path, data["output"]))
+        s3.upload_file(self.logs_path, upload_bucket, os.path.join(upload_path, self.logs_path))
 
 
 # if __name__ == "__main__":

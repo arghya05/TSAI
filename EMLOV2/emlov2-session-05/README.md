@@ -24,45 +24,58 @@
 # Assignment
 
 1. Take the TRAINED MODEL deployment from previous assignment
+
 - CIFAR10 trained RESNET18 model
 - you have to use scripted model
+
 2. Push the Model to S3
 3. Modify your deploy script to download model from S3
+
 - you can use boto3 to download from S3 and load the model once
 - or you can use a bash script to download using aws cli
 - HINT: using S3 on Fargate will require a role to access S3 in Task Definition (Task role)
+
 4. The Demo Web UI must run on port 80 and be publicly accessible
 5. Push the Docker Image to ECR
 6. Create a Fargate Spot Deployment on ECS
 7. Share the link of the github repository that has the Dockerfile for above, and also your inference code
-- It should have instructions on how to run the Container ! 
+
+- It should have instructions on how to run the Container !
 - NOTE: DO NOT EVER PUSH ANY OF YOUR AWS SECRETS TO GITHUB !
+
 8. Share the image and tagname of the repo you pushed to AWS ECR
 9. Submit your deployment ip address in Github Classroom which will test your deployment
-- try to keep your commits as less as possible <5 commits
+
+- try to keep your commits as less as possible \<5 commits
 - before pushing test it
 
 # Bonus Assignment (500 Points)
+
 1. Save every inference input and output to S3, along with date and time of inference
+
 - You can use Gradio Flagging
 - https://gradio.app/using_flagging/Links to an external site.
 - https://github.com/gradio-app/gradio/blob/master/gradio/flagging.pyLinks to an external site.
+
 2. The Model S3 URI and the Inference input and output S3 URI must be changeable
+
 - When doing docker run these environment variables will be specified
-``` 
+
+```
 Example: docker run -it your_image:latest -e "model=s3://my-bucket/models/resnet18.pth" -e "flagged_dir=s3://my-bucket/outputs/resnet18"
 ```
 
 3. Bonus assignment must be a different docker image and tag, that is pushed to ECR
 4. Share link to the image name and tag and USAGE instructions (should be included in your Github Repo)
 
-# Solution 
- 
+# Solution
+
 ECR URI:- `public.ecr.aws/l7c3w2k7/cifar-jit-test:latest`
 
 [python code](./vision.py)
 
 Dockerfile
+
 <details>
 <summary><b> Dockerfile</b></summary>
 
@@ -80,7 +93,7 @@ RUN pip3 install --no-cache-dir -U pip && \
     pip3 install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime
-FROM python:3.7-slim-buster 
+FROM python:3.7-slim-buster
 
 COPY --from=build /venv /venv
 ENV PATH=/venv/bin:$PATH
@@ -97,7 +110,6 @@ ENTRYPOINT ["python3", "vision.py"]
 </details>
 
 # Bonus Solutions
-
 
 ```bash
 docker run -p <port>:<port> -e "model=s3://<bucket_name>/<model_path>" -e "flagged_dir=s3://<bucket_name>/<upload_path>" <image_name>:<tag>
@@ -128,7 +140,7 @@ RUN pip3 install --no-cache-dir -U pip && \
     pip3 install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime
-FROM python:3.7-slim-buster 
+FROM python:3.7-slim-buster
 
 COPY --from=build /venv /venv
 ENV PATH=/venv/bin:$PATH
@@ -143,6 +155,7 @@ COPY vision_bonus.py .
 EXPOSE 80
 ENTRYPOINT ["python3", "vision_bonus.py"]
 ```
+
 </details>
 
 ## Deployment on AWS Fargate
@@ -206,7 +219,6 @@ OK
 
 Amazon web service is an online platform that provides scalable and cost-effective cloud computing solutions. AWS is a broadly adopted cloud platform that offers several on-demand operations like compute power, database storage, content delivery, etc., to help corporates scale and grow.
 
-
 The Amazon Web Services (AWS) platform provides more than 200 fully featured services from data centers located all over the world, and is the world's most comprehensive cloud platform.
 
 Amazon web service is an online platform that provides scalable and cost-effective cloud computing solutions.
@@ -215,7 +227,7 @@ AWS is a broadly adopted cloud platform that offers several on-demand operations
 
 https://aws.amazon.com/ec2/instance-types/
 
-![ec2](images\ec2-types.png)
+![ec2](images%5Cec2-types.png)
 
 # EC2 Pricing
 
@@ -232,7 +244,7 @@ Pricing Calculator: https://calculator.aws/
 1. Go to EC2 Dashboard
 2. Click on “Launch Instances”
 3. Make sure to use the new launch instance ui.
-   
+
 AMIs are like your OS Image, they contain the entire OS and this will be on the disk attached to your EC2.
 
 ![](images/ami.png)
@@ -250,7 +262,6 @@ This is the most important part of the EC2 launching process, here you select th
 Note the “Free tier eligible” instance because these are free for your new AWS account for a year.
 
 ![](imaegs/instance-type.png)
-
 
 # Key Pair
 
@@ -277,32 +288,32 @@ Secure Shell, Its most notable applications are remote login and command-line ex
 ![](images/ssh.png)
 
 Before we can use our private key to login to the instance we need to change its permissions slightly. (If you are on windows, i highly recommend you to use WSL)
+
 ```
 chmod 600 key_pair.pem
 ```
+
 If you wan to know how the magic 600 came from:https://chmod-calculator.com/
+
 ```
 ssh -i -vvv key_pair.pem ubuntu@<ip_address>
 ```
-Lets say we don't want to use the pem file, because its a hassle to type so much 
+
+Lets say we don't want to use the pem file, because its a hassle to type so much
 
 ```
 cat ~/.ssh/id_rsa.pub
 ```
- 
 
 Here you can see all public keys
 
 Add a New line and paste your public key you copied. Save and Exit.
-
- 
 
 Now you can SSH into your server with
 
 ```
 ssh ubuntu@<ip_address>
 ```
-
 
 # AWS S3
 
@@ -336,6 +347,7 @@ curl "<https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip>" -o "awscliv2.z
 unzip awscliv2.zip
 sudo ./aws/install
 ```
+
 Before we can use AWS CLI we need to setup AWS IAM
 
 # AWS IAM
@@ -343,8 +355,6 @@ Before we can use AWS CLI we need to setup AWS IAM
 ![](images/iam.png)
 
 Create a New Role with S3 Access to our Bucket
-
- 
 
 IAM → Roles → Create Role
 
@@ -366,6 +376,7 @@ IAM → Roles → Create Role
 		]
 }
 ```
+
 Here we are saying that this role can upload, download and delete any object in bucket
 
 Attaching IAM to EC2
@@ -393,14 +404,11 @@ https://aws.amazon.com/fargate/pricing/
 
 With AWS Fargate, you pay for the amount of vCPU and memory resources that your containerized application requests. vCPU and memory resources are calculated from the time your container images are pulled until the Amazon ECS Task terminates, rounded up to the nearest second. A minimum charge of one minute applies.
 
- ![](image/../images/fargate.png)
- ![](images/fargate-compare.png)
+![](image/../images/fargate.png)
+![](images/fargate-compare.png)
 
-
- It is important to notice that with Lambda you don't need to build, secure, or maintain a container. You just worry about the code. Now as mentioned already, Lambda has a max run time limit and 3GB memory limit (CPU increases proportionally). Also if it is used sporadically it may need to be pre-warmed (called on a schedule) for extra performance.
+It is important to notice that with Lambda you don't need to build, secure, or maintain a container. You just worry about the code. Now as mentioned already, Lambda has a max run time limit and 3GB memory limit (CPU increases proportionally). Also if it is used sporadically it may need to be pre-warmed (called on a schedule) for extra performance.
 
 Fargate manages docker containers, which you need to define, maintain and secure. If you need more control of what is available in the environment where your code runs, you could potentially use a container (or a server), but that again comes with the management. You also have more options on Memory/CPU size and length of time your run can take to run.
 
 Even for an API server as you mentioned you could put API gateway in front and call Lambda.
-
-

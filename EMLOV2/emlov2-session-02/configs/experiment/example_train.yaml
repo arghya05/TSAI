@@ -23,7 +23,6 @@ model:
   optimizer:
     lr: 0.002
   model: "resnet18"
-  
 
 datamodule:
   batch_size: 64

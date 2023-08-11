@@ -2,26 +2,25 @@
 
 ### Assignment:
 
-  Your new target is:
-  - 99.4% (this must be consistently shown in your last few epochs, and not a one-time achievement)
-  - Less than or equal to 15 Epochs
-  - Less than 10000 Parameters (additional points for doing this in less than 8000 pts)
+Your new target is:
 
-Model Comparision
-----------------
+- 99.4% (this must be consistently shown in your last few epochs, and not a one-time achievement)
+- Less than or equal to 15 Epochs
+- Less than 10000 Parameters (additional points for doing this in less than 8000 pts)
 
-| Experiments | Parameters | Best Training Acc | Best Training Loss | Best Test Acc  | Best Test Loss  | Analysis |
-| :-------: | :---------: |:-----------: | :------: | :-------: | :-------: | :-------: |
-| [Model4_best_modelLR](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model4_best_modelLR.ipynb) |  7.4k | 99.24 | 0.00553 |99.56% | 0.0168 |  • We tried different learning rate schedulers like ReduceLRPlatue which did not work because on platue decreses the learning rate when loss is incresing in a particular epochs but this did not happen in out problem. StepLR also did not work because it is hard to predict at which point the learning rate should be reduced <br> • So, we have used OneCycleLR which updates learning rate throughout the epoch with every single batch is passed (Learning rate is updated in a particular range) |
-| [Model3_augmentation](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model3_augmentation.ipynb) |  7.4k |  99.00 | 0.01188 | 99.34 | 0.0213 | There were some examples in testing data on which model was not able to give correct prediction, adding data augmentation helps to modifies the training samples, which increse the performance of model while training, we can see it as the jump in training accuracy and also the model is able to predict the testing data better compare with last model. |
-| [Model2_bn_dropout](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model2_bn_dropout.ipynb) | 7.4k | 98.58 | 0.01337 | 99.28 | 0.0230 | The model is pushed future by applying the batchnormalization. Dropout made the training harder by dropping the neurons |
-| [Model1_Basic_Skeleton](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model1_Basic_Skeleton.ipynb) | 7.3k | 98.58 | 0.01337 | 98.66 | 0.0464 | Design model architeture of less than 8000 parameters The accuracy was very well with such less number of parameters and the training accuracy batch normalization and dropout can push the performance |
+## Model Comparision
 
-
+|                                                Experiments                                                | Parameters | Best Training Acc | Best Training Loss | Best Test Acc | Best Test Loss |                                                                                                                                                                                                                                                 Analysis                                                                                                                                                                                                                                                 |
+| :-------------------------------------------------------------------------------------------------------: | :--------: | :---------------: | :----------------: | :-----------: | :------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|   [Model4_best_modelLR](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model4_best_modelLR.ipynb)   |    7.4k    |       99.24       |      0.00553       |    99.56%     |     0.0168     | • We tried different learning rate schedulers like ReduceLRPlatue which did not work because on platue decreses the learning rate when loss is incresing in a particular epochs but this did not happen in out problem. StepLR also did not work because it is hard to predict at which point the learning rate should be reduced <br> • So, we have used OneCycleLR which updates learning rate throughout the epoch with every single batch is passed (Learning rate is updated in a particular range) |
+|   [Model3_augmentation](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model3_augmentation.ipynb)   |    7.4k    |       99.00       |      0.01188       |     99.34     |     0.0213     |                                                                      There were some examples in testing data on which model was not able to give correct prediction, adding data augmentation helps to modifies the training samples, which increse the performance of model while training, we can see it as the jump in training accuracy and also the model is able to predict the testing data better compare with last model.                                                                      |
+|     [Model2_bn_dropout](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model2_bn_dropout.ipynb)     |    7.4k    |       98.58       |      0.01337       |     99.28     |     0.0230     |                                                                                                                                                                                         The model is pushed future by applying the batchnormalization. Dropout made the training harder by dropping the neurons                                                                                                                                                                                          |
+| [Model1_Basic_Skeleton](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model1_Basic_Skeleton.ipynb) |    7.3k    |       98.58       |      0.01337       |     98.66     |     0.0464     |                                                                                                                                                 Design model architeture of less than 8000 parameters The accuracy was very well with such less number of parameters and the training accuracy batch normalization and dropout can push the performance                                                                                                                                                  |
 
 # Best Model Architecture
-  - [to notebbok](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model4_best_modelLR.ipynb)
-  
+
+- [to notebbok](https://github.com/vivek-a81/EVA6/blob/main/Session5/Model4_best_modelLR.ipynb)
+
 ![alt](Images/SESS5.png)
 
 ```
@@ -64,29 +63,27 @@ Trainable params: 7,496
 Non-trainable params: 0
 ----------------------------------------------------------------
 ```
+
 ![](Images/rff.png)
 
-| OPERATION |	N<sub>in</sub> |	N<sub>out</sub> |	CH<sub>in</sub> |	CH<sub>out</sub> |	Padding	| Kernel |	Stride	| j<sub>in</sub> |	j<sub>out</sub>	| r<sub>in</sub> |	r<sub>out</sub> |
-| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-| **CONVLUTION** |	28 | 26	| 1	 | 8	| 0	| 3	| 1 | 1	| 1 |	1  |  3  |
-| **CONVLUTION** |	26 | 24	| 8	 | 16 |	0	| 3	| 1	| 1 |	1 |	3  |	5  |
-| **MaxPool**    |	24 | 12 |	16 | 16	| 0 |	2	| 2	| 1 |	2 | 5  |	6  |
-| **CONVLUTION** |	12 | 12 | 16 |	8	| 0 |	1 |	1	| 2	| 2 |	6  |	6  |
-| **CONVLUTION** |	12 | 10 |	8	 | 12	| 0 | 3 |	1	| 2	| 2 |	6  |	10 |
-| **CONVLUTION** |	10 | 8  |	12 | 16 | 0 | 3 |	1	| 2	| 2	| 10 |	14 |
-| **CONVLUTION** |	8	 | 6  | 16 | 20	| 0	| 3	| 1	| 2 |	2	| 14 |  18 |
-| **GAP**        |  6  | 1  |	20 | 20	| 0	| 6	| 1 |	2 |	2 |	18 |	28 |
-| **CONVLUTION** |	1	 | 1  |	20 | 16	| 0	| 1	| 1	| 2	| 2	| 28 |  28 |
-| **CONVLUTION** |	1	 | 1  |	16 | 10	| 0	| 1 |	1	| 2	| 2	| 28 |	28 |
+|   OPERATION    | N<sub>in</sub> | N<sub>out</sub> | CH<sub>in</sub> | CH<sub>out</sub> | Padding | Kernel | Stride | j<sub>in</sub> | j<sub>out</sub> | r<sub>in</sub> | r<sub>out</sub> |
+| :------------: | :------------: | :-------------: | :-------------: | :--------------: | :-----: | :----: | :----: | :------------: | :-------------: | :------------: | :-------------: |
+| **CONVLUTION** |       28       |       26        |        1        |        8         |    0    |   3    |   1    |       1        |        1        |       1        |        3        |
+| **CONVLUTION** |       26       |       24        |        8        |        16        |    0    |   3    |   1    |       1        |        1        |       3        |        5        |
+|  **MaxPool**   |       24       |       12        |       16        |        16        |    0    |   2    |   2    |       1        |        2        |       5        |        6        |
+| **CONVLUTION** |       12       |       12        |       16        |        8         |    0    |   1    |   1    |       2        |        2        |       6        |        6        |
+| **CONVLUTION** |       12       |       10        |        8        |        12        |    0    |   3    |   1    |       2        |        2        |       6        |       10        |
+| **CONVLUTION** |       10       |        8        |       12        |        16        |    0    |   3    |   1    |       2        |        2        |       10       |       14        |
+| **CONVLUTION** |       8        |        6        |       16        |        20        |    0    |   3    |   1    |       2        |        2        |       14       |       18        |
+|    **GAP**     |       6        |        1        |       20        |        20        |    0    |   6    |   1    |       2        |        2        |       18       |       28        |
+| **CONVLUTION** |       1        |        1        |       20        |        16        |    0    |   1    |   1    |       2        |        2        |       28       |       28        |
+| **CONVLUTION** |       1        |        1        |       16        |        10        |    0    |   1    |   1    |       2        |        2        |       28       |       28        |
 
-
-Learning Curve
-------------
+## Learning Curve
 
 ![alt](Images/loss.png)
 
-Logs
------------
+## Logs
 
 ```
   0%|          | 0/469 [00:00<?, ?it/s]
@@ -181,8 +178,6 @@ Logs
 
 ```
 
-Evaluation of Final Model 
------------
+## Evaluation of Final Model
 
 ![](Images/prediction.png)
-

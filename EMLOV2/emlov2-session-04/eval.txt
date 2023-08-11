@@ -4,52 +4,52 @@
 [[36m2022-09-10 11:09:49,391[0m][[34msrc.utils.rich_utils[0m][[33mWARNING[0m] - Field 'logger' not found in config. Skipping 'logger' config printing...[0m
 CONFIG
 ├── datamodule
-│   └── _target_: src.datamodules.cifar10_datamodule.CIFAR10DataModule          
-│       data_dir: /code/data/                                                   
-│       batch_size: 128                                                         
-│       train_val_test_split:                                                   
-│       - 45000                                                                 
-│       - 5000                                                                  
-│       - 10000                                                                 
-│       num_workers: 12                                                         
-│       pin_memory: false                                                       
-│                                                                               
+│   └── _target_: src.datamodules.cifar10_datamodule.CIFAR10DataModule
+│       data_dir: /code/data/
+│       batch_size: 128
+│       train_val_test_split:
+│       - 45000
+│       - 5000
+│       - 10000
+│       num_workers: 12
+│       pin_memory: false
+│
 ├── model
-│   └── _target_: src.models.cifar10_module.CIFAR10LitModule                    
-│       optimizer:                                                              
-│         _target_: torch.optim.Adam                                            
-│         _partial_: true                                                       
-│         lr: 0.001                                                             
-│         weight_decay: 0.0                                                     
-│       model: resnet18                                                         
-│                                                                               
+│   └── _target_: src.models.cifar10_module.CIFAR10LitModule
+│       optimizer:
+│         _target_: torch.optim.Adam
+│         _partial_: true
+│         lr: 0.001
+│         weight_decay: 0.0
+│       model: resnet18
+│
 ├── trainer
-│   └── _target_: pytorch_lightning.Trainer                                     
-│       default_root_dir: /code/logs/eval/runs/2022-09-10_11-09-49              
-│       min_epochs: 1                                                           
-│       max_epochs: 1                                                           
-│       accelerator: cpu                                                        
-│       devices: 1                                                              
-│       deterministic: false                                                    
-│                                                                               
+│   └── _target_: pytorch_lightning.Trainer
+│       default_root_dir: /code/logs/eval/runs/2022-09-10_11-09-49
+│       min_epochs: 1
+│       max_epochs: 1
+│       accelerator: cpu
+│       devices: 1
+│       deterministic: false
+│
 ├── paths
-│   └── root_dir: /code                                                         
-│       data_dir: /code/data/                                                   
-│       log_dir: /code/logs/                                                    
-│       output_dir: /code/logs/eval/runs/2022-09-10_11-09-49                    
-│       work_dir: /code                                                         
-│                                                                               
+│   └── root_dir: /code
+│       data_dir: /code/data/
+│       log_dir: /code/logs/
+│       output_dir: /code/logs/eval/runs/2022-09-10_11-09-49
+│       work_dir: /code
+│
 ├── extras
-│   └── ignore_warnings: false                                                  
-│       enforce_tags: true                                                      
-│       print_config: true                                                      
-│                                                                               
+│   └── ignore_warnings: false
+│       enforce_tags: true
+│       print_config: true
+│
 ├── task_name
-│   └── eval                                                                    
+│   └── eval
 ├── tags
-│   └── ['dev']                                                                 
+│   └── ['dev']
 └── ckpt_path
-    └── checkpoints/epoch_000.ckpt                                              
+    └── checkpoints/epoch_000.ckpt
 [[36m2022-09-10 11:09:49,430[0m][[34m__main__[0m][[32mINFO[0m] - Instantiating datamodule <src.datamodules.cifar10_datamodule.CIFAR10DataModule>[0m
 [[36m2022-09-10 11:09:49,434[0m][[34m__main__[0m][[32mINFO[0m] - Instantiating model <src.models.cifar10_module.CIFAR10LitModule>[0m
 [[36m2022-09-10 11:09:49,742[0m][[34mtimm.models.helpers[0m][[32mINFO[0m] - Loading pretrained weights from url (https://download.pytorch.org/models/resnet18-5c106cde.pth)[0m

@@ -1,8 +1,8 @@
+import base64
+import json
 import unittest
 
 import requests
-import json
-import base64
 from requests import Response
 
 
@@ -23,27 +23,23 @@ class TestFargateGradio(unittest.TestCase):
             print(f"testing: {image_path}")
 
             with open(image_path, "rb") as f:
-                ext = image_path.split('.')[-1]
-                prefix = f'data:image/{ext};base64,'
-                base64_data = prefix + base64.b64encode(f.read()).decode('utf-8')
+                ext = image_path.split(".")[-1]
+                prefix = f"data:image/{ext};base64,"
+                base64_data = prefix + base64.b64encode(f.read()).decode("utf-8")
 
-            payload = json.dumps({
-            "data": [
-                base64_data
-            ]
-            })
+            payload = json.dumps({"data": [base64_data]})
 
-            headers = {
-            'Content-Type': 'application/json'
-            }
+            headers = {"Content-Type": "application/json"}
 
-            response: Response = requests.request("POST", self.base_url, headers=headers, data=payload, timeout=15)
+            response: Response = requests.request(
+                "POST", self.base_url, headers=headers, data=payload, timeout=15
+            )
 
             print(f"response: {response.text}")
 
-            data = response.json()['data'][0]
+            data = response.json()["data"][0]
 
-            predicted_label = data['label']
+            predicted_label = data["label"]
 
             print(f"predicted label: {predicted_label}")
 
@@ -54,5 +50,5 @@ class TestFargateGradio(unittest.TestCase):
             print()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

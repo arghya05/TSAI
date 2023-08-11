@@ -2,30 +2,26 @@
 
 Self-attention-based architectures, in particular Transformers, have become the model of choice in natural language processing (NLP). The dominant approach is to pre-train on
 a large text corpus and then fine-tune on a smaller task-specific dataset (Devlin et al., 2019). Thanks to Transformers’ computational efficiency and scalability.
-In computer vision, however, convolutional architectures remain dominant. Inspired by NLP successes, multiple works try 
+In computer vision, however, convolutional architectures remain dominant. Inspired by NLP successes, multiple works try
 combining CNN-like architectures with self-attention. **AN IMAGE IS WORTH 16X16 WORDS:
 TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE**
 
-
-VIT Baby Steps Working Procedure
----------------------
+## VIT Baby Steps Working Procedure
 
 The overall architecture can be described easily in five simple steps:
+
 - Split the input image to patches
-- Flatten all the patches 
-- Add positional embedding and [CLS] token to each Patch Embeddings
+- Flatten all the patches
+- Add positional embedding and \[CLS\] token to each Patch Embeddings
 - Produce  lower-dimensional linear embeddings
-- Pass it through a Transofrmer Encoder 
-- Pass the representations of [CLS] tokens through an MLP Head to get final class predictions. 
+- Pass it through a Transofrmer Encoder
+- Pass the representations of \[CLS\] tokens through an MLP Head to get final class predictions.
 
 <p float="center">
  <img src="https://github.com/vivek-a81/EVA6/blob/main/Session13/images/vit-01.png" alt="drawing">
 </p>
 
-
-
-Step By Step Code Flow:
-----------------------
+## Step By Step Code Flow:
 
 ### Patch Embeddings
 
@@ -57,14 +53,15 @@ class PatchEmbeddings(nn.Module):
         x = self.projection(pixel_values).flatten(2).transpose(1, 2)
         return x
 ```
+
 **Working:** Transformers take a 1D sequence of image patches. This class is used to pass the image and convert it not these patches through the same linear projection layer.
-Other way of of doing this might be to take the whole image and loop it to num_patches while slicing according to pixel size of each patch and flattening it. But this will be 
+Other way of of doing this might be to take the whole image and loop it to num_patches while slicing according to pixel size of each patch and flattening it. But this will be
 time consuming, instead a smarter and easier way would be to use convolution. Since it a conv layer it makes these projection learnable.
 
-If `image_size=224, patch_size=16, num_channels=3, embed_dim=768`, here each patch would be of 16X16 that would make 
-`num_patches=image_size/path_size = 224/16 = 14*14 = 196 patches`  `to_2tuple()` will check if the input is iterable or not if not it will make it a tuple and return it. 
-`self.projection` will project the input image to `num_pathces*embed_dim`, `embedding dimmensions` are calculated by `patch_size*patch_size*channel=16*16*3=768`. We are taking 
-strides equal to number of patches so that 16*16 kernal convolves on the patch once and will move to next patch.
+If `image_size=224, patch_size=16, num_channels=3, embed_dim=768`, here each patch would be of 16X16 that would make
+`num_patches=image_size/path_size = 224/16 = 14*14 = 196 patches`  `to_2tuple()` will check if the input is iterable or not if not it will make it a tuple and return it.
+`self.projection` will project the input image to `num_pathces*embed_dim`, `embedding dimmensions` are calculated by `patch_size*patch_size*channel=16*16*3=768`. We are taking
+strides equal to number of patches so that 16\*16 kernal convolves on the patch once and will move to next patch.
 
 ### Position and CLS Embeddings
 
@@ -99,12 +96,13 @@ class ViTEmbeddings(nn.Module):
         embeddings = self.dropout(embeddings)
         return embeddings
 ```
-**Working:** In transformers we have position embeddings and [CLS] token or embeddings which are again a learnable parameters. The [CLS] vector gets computed using 
-self-attention, so it can only collect the relevant information from the rest of the hidden states. So, in some sense the [CLS] vector is also an average over token vectors. 
-Later it the only vector used for all the processing . [CLS] token is a created using nn.Parameter of size batch_sizeX1X768.
-**Possitional Embeddings** contains the imformation regarding the position and order of patches. As image is taken as simultaneously flows of patches 
+
+**Working:** In transformers we have position embeddings and \[CLS\] token or embeddings which are again a learnable parameters. The \[CLS\] vector gets computed using
+self-attention, so it can only collect the relevant information from the rest of the hidden states. So, in some sense the \[CLS\] vector is also an average over token vectors.
+Later it the only vector used for all the processing . \[CLS\] token is a created using nn.Parameter of size batch_sizeX1X768.
+**Possitional Embeddings** contains the imformation regarding the position and order of patches. As image is taken as simultaneously flows of patches
 through the Transformer’s encoder/decoder stack, The model itself doesn’t have any sense of position/order, there’s need to learn the position in order for the model to work.
-After the low-dimensional linear projection, a trainable position embedding is added to the patch representations. 
+After the low-dimensional linear projection, a trainable position embedding is added to the patch representations.
 It is interesting to see what these position embeddings look like after training:
 
 <p float="center">
@@ -112,7 +110,7 @@ It is interesting to see what these position embeddings look like after training
 </p>
 
 The configuration values are also inputed to class which contains all the information regrading input size, dropout value, hidden state, embeddings etc.
-The input image is converted to patch embeddings then class embeddings are concatenated to each patch in the image of a particular batch size after that 
+The input image is converted to patch embeddings then class embeddings are concatenated to each patch in the image of a particular batch size after that
 the positional embeddings are added to each and every patch in the patch.
 
 <p float="center">
@@ -126,11 +124,12 @@ the positional embeddings are added to each and every patch in the patch.
 </p>
 
 Transformer encoder works in the following steps:
-* Send the embeddings to the layer normalization
-* Generate key, value & quaries from the embeddings
-* To get the attention scores multiply quary with tanspose of key
-* Divide the attention scores with square root of attention head size and pass it through softmax layer to get the attention probabs
-* Multiply the attention probablities with the values to get the context layer
+
+- Send the embeddings to the layer normalization
+- Generate key, value & quaries from the embeddings
+- To get the attention scores multiply quary with tanspose of key
+- Divide the attention scores with square root of attention head size and pass it through softmax layer to get the attention probabs
+- Multiply the attention probablities with the values to get the context layer
 
 ```
 class ViTSelfAttention(nn.Module):
@@ -210,8 +209,8 @@ class ViTSelfOutput(nn.Module):
     return hidden_states
 ```
 
-ViTAttention combined two calsses ViTSelfAttention & ViTSelfOutput the input states of embeddings are first send to the ViTSelfAttention to get the context layer and then to 
-ViTSelfOutput, later the input is added to the output of ViTSelfOutput making a skip connnection 
+ViTAttention combined two calsses ViTSelfAttention & ViTSelfOutput the input states of embeddings are first send to the ViTSelfAttention to get the context layer and then to
+ViTSelfOutput, later the input is added to the output of ViTSelfOutput making a skip connnection
 
 ```
 class ViTAttention(nn.Module):
@@ -247,6 +246,7 @@ class ViTAttention(nn.Module):
         outputs = (attention_output,) + self_outputs[1:]  # add attentions if we output them
         return outputs
 ```
+
 A complete Transformer Self Attention Encoder layer is created by combining all the classes above followed by layer normalization then a MLP head
 
 ```
@@ -275,7 +275,9 @@ class ViTOutput(nn.Module):
 
         return hidden_states
 ```
+
 Above two classes form a MLP head
+
 ```
 class ViTLayer(nn.Module):
     """This corresponds to the Block class in the timm implementation."""
@@ -317,11 +319,11 @@ class ViTLayer(nn.Module):
         intermediate_output = self.intermediate(attention_output)
         layer_output = self.output(intermediate_output)
         return layer_output
-  ```
-  
+```
+
 ### VIT Model
-  
-There are 12 such layer in a vit model 
+
+There are 12 such layer in a vit model
 
 ```
 class ViTModel():
@@ -402,7 +404,8 @@ class ViTModel():
 
         return sequence_output,pooled_output,encoder_outputs.hidden_states,encoder_outputs.attentions
 ```
-The 0-th index output i.e. [CLS] token are only taken for further processing after the 12 encoder blocks as all information is pushed towards this. A linear layer is added
+
+The 0-th index output i.e. \[CLS\] token are only taken for further processing after the 12 encoder blocks as all information is pushed towards this. A linear layer is added
 to map the output to the number of classes for classification.
 
 ```
@@ -419,7 +422,6 @@ pooled_output = activation(pooled_output)
 classifier = nn.Linear(config.hidden_size, 100)
 logits = classifier(pooled_output)
 ```
-
 
 # Refrences
 

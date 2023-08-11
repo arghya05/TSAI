@@ -32,7 +32,7 @@ class CIFAR10LitModule(LightningModule):
         # this line allows to access init params with 'self.hparams' attribute
         # also ensures init params will be stored in ckpt
         self.save_hyperparameters(logger=False, ignore=["net"])
-        
+
         self.net = create_model(model, pretrained=True, num_classes=10)
 
         # loss function
@@ -79,7 +79,6 @@ class CIFAR10LitModule(LightningModule):
         # `outputs` is a list of dicts returned from `training_step()`
         self.train_acc.reset()
         # self.logger.log_hyperparams(vars(self.hparams))
-
 
     def validation_step(self, batch: Any, batch_idx: int):
         loss, preds, targets = self.step(batch)

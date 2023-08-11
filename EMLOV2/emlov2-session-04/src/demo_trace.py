@@ -10,14 +10,14 @@ root = pyrootutils.setup_root(
 import os
 from typing import List, Tuple
 
-import torch
-import hydra
 import gradio as gr
+import hydra
+import torch
 from omegaconf import DictConfig
-
 from src import utils
 
 log = utils.get_pylogger(__name__)
+
 
 def demo(cfg: DictConfig) -> Tuple[dict, dict]:
     """Demo function.
@@ -37,8 +37,7 @@ def demo(cfg: DictConfig) -> Tuple[dict, dict]:
 
     log.info(f"Loaded Model: {model}")
 
-    classes = ('plane', 'car', 'bird', 'cat',
-           'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+    classes = ("plane", "car", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck")
     print(cfg)
 
     def recognize_cifar(image):
@@ -62,11 +61,11 @@ def demo(cfg: DictConfig) -> Tuple[dict, dict]:
 
     demo.launch(server_name="0.0.0.0")
 
-@hydra.main(
-    version_base="1.2", config_path=root / "configs", config_name="demo_trace.yaml"
-)
+
+@hydra.main(version_base="1.2", config_path=root / "configs", config_name="demo_trace.yaml")
 def main(cfg: DictConfig) -> None:
     demo(cfg)
+
 
 if __name__ == "__main__":
     main()

@@ -22,4 +22,3 @@ rich            # beautiful text formatting in terminal
 pytest          # tests
 # sh            # for running bash commands in some tests (linux/macos only)
 git+https://github.com/rwightman/pytorch-image-models.git
-

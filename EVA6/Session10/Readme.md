@@ -6,27 +6,26 @@
 - [Data Vizulation](#tiny-image-net)
 - [Tiny Image Net 200 Augmentation Vizulation](#tiny-imagenet-200-augmentation-vizulation)
 - [Model Evaluation](#model-evaluation)
-  * [Custom-resnet Learning Curve](#resnet18-learning-curve)
-  * [Custom-resnet Misclassified Images](#resnet18-misclassified-images)
-  * [Training Logs Last 10 epcoh](#training-logs)
+  - [Custom-resnet Learning Curve](#resnet18-learning-curve)
+  - [Custom-resnet Misclassified Images](#resnet18-misclassified-images)
+  - [Training Logs Last 10 epcoh](#training-logs)
 - [Assignment B](#assignment-b)
 - [Problem Statement of Assignment B](#problem-statement-of-assignment-b)
 - [COCO DATASET](#coco-dataset)
 - [Refrences](#references)
 - [Team Members](#team-members)
 
-
 # Problem Statement
-1. Assignment A:
-   1. Download this [TINY IMAGENET ](http://cs231n.stanford.edu/tiny-imagenet-200.zip)dataset. 
-   2. Train ResNet18 on this dataset (70/30 split) for 50 Epochs. Target 50%+ Validation Accuracy. 
-   3. Submit Results. Of course, you are using your own package for everything. You can look at [this ](https://github.com/sonugiri1043/Train_ResNet_On_Tiny_ImageNet/blob/master/Train_ResNet_On_Tiny_ImageNet.ipynb) for reference. 
-2. Assignment B:
-   1.  Learn how COCO object detection dataset's schema is. This file has the same schema. You'll need to discover what those number are. 
-   2. Identify these things for this dataset:
-      1. readme data for class distribution (along with the class names) along with a graph 
-      2. Calculate the Anchor Boxes for k = 3, 4, 5, 6 and draw them.
 
+1. Assignment A:
+   1. Download this [TINY IMAGENET ](http://cs231n.stanford.edu/tiny-imagenet-200.zip)dataset.
+   2. Train ResNet18 on this dataset (70/30 split) for 50 Epochs. Target 50%+ Validation Accuracy.
+   3. Submit Results. Of course, you are using your own package for everything. You can look at [this ](https://github.com/sonugiri1043/Train_ResNet_On_Tiny_ImageNet/blob/master/Train_ResNet_On_Tiny_ImageNet.ipynb) for reference.
+2. Assignment B:
+   1. Learn how COCO object detection dataset's schema is. This file has the same schema. You'll need to discover what those number are.
+   2. Identify these things for this dataset:
+      1. readme data for class distribution (along with the class names) along with a graph
+      2. Calculate the Anchor Boxes for k = 3, 4, 5, 6 and draw them.
 
 # Assignment A
 
@@ -46,23 +45,23 @@ Augmentation Used:
   A.Normalize(mean, std),
   ToTensorV2()
 ```
+
 - Dataset Used: tiny ImageNet
 - Test Accuracy : 50.13% in 50 epochs reached at 44 epoch
 - Train Accuracy : 95.26%
 
-
 One Cycle Policy
+
 ```
-scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, 
+scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer,
                                                 max_lr=1.0,
-                                                steps_per_epoch=len(train_loader), 
+                                                steps_per_epoch=len(train_loader),
                                                 epochs=50,
                                                 pct_start=0.2,
                                                 div_factor=10,
-                                                three_phase=True, 
+                                                three_phase=True,
                                                 )
-```                                            
-
+```
 
 ## Tiny Image Net
 
@@ -78,31 +77,26 @@ scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer,
   <img src="images/aug.png" alt="drawing" width="650">
 </p>
 
-
 # Model Evaluation
 
 We have plotted
-* ResNet18 Learning Curve
-* ResNet18 Misclassified Images
 
+- ResNet18 Learning Curve
+- ResNet18 Misclassified Images
 
-ResNet18 Learning Curve
---------------------------
+## ResNet18 Learning Curve
 
 <p float="center">
   <img src="images/lr.png" alt="drawing" width="650">
 </p>
 
-
-ResNet18 Misclassified Images
---------------------------
+## ResNet18 Misclassified Images
 
 <p float="center">
   <img src="images/misclf.png" alt="drawing" height="600">
 </p>
 
-Training Logs
-----------
+## Training Logs
 
 ```
 EPOCH: 41 (LR: 0.024985442450470904)
@@ -164,11 +158,12 @@ Test set: Average loss: 3.2014, Accuracy: 15038/30000 (50.13%)
 
 - Learn how COCO object detection dataset's schema is. This file has the same schema. You'll need to discover what those number are.
 - Identify these things for this dataset:
-     1. readme data for class distribution (along with the class names) along with a graph
-     2. Calculate the Anchor Boxes **using K Means** for k = 3, 4, 5, 6 and draw them.
+  1. readme data for class distribution (along with the class names) along with a graph
+  2. Calculate the Anchor Boxes **using K Means** for k = 3, 4, 5, 6 and draw them.
 
 # COCO DATASET
-The sample_coco.txt given for this assignment looks like this: id: 0, height: 330, width: 1093, bbox:[69, 464, 312, 175], id: 1, height: 782, width: 439, bbox:[359, 292, 83, 199], id: 3, height: 645, width: 831, bbox:[297, 312, 267, 167], id: 34, height: 943, width: 608, bbox:[275, 112, 319, 290], id: 20, height: 593, width: 857, bbox:[71, 368, 146, 147], id: 61, height: 587, width: 745, bbox:[177, 463, 68, 302],
+
+The sample_coco.txt given for this assignment looks like this: id: 0, height: 330, width: 1093, bbox:\[69, 464, 312, 175\], id: 1, height: 782, width: 439, bbox:\[359, 292, 83, 199\], id: 3, height: 645, width: 831, bbox:\[297, 312, 267, 167\], id: 34, height: 943, width: 608, bbox:\[275, 112, 319, 290\], id: 20, height: 593, width: 857, bbox:\[71, 368, 146, 147\], id: 61, height: 587, width: 745, bbox:\[177, 463, 68, 302\],
 
 Here is is the class id, followed by the height and width of the image. the bounding box (bbox). The COCO dataset defines the bounding box as x,y, width, height, where x and y is the vertex closer to origin.
 
@@ -176,20 +171,15 @@ Here is is the class id, followed by the height and width of the image. the boun
   <img src="Assignment B/images/anchorboxes.png" alt="drawing" width="650">
 </p>
 
-
 <p float="center">
   <img src="Assignment B/images/excel_ss.png" alt="drawing" width="650">
 </p>
 
-References
-------------------------
+## References
 
-* https://github.com/sonugiri1043/Train_ResNet_On_Tiny_ImageNet/blob/master/Train_ResNet_On_Tiny_ImageNet.ipynb
-* https://www.immersivelimit.com/tutorials/create-coco-annotations-from-scratch
+- https://github.com/sonugiri1043/Train_ResNet_On_Tiny_ImageNet/blob/master/Train_ResNet_On_Tiny_ImageNet.ipynb
+- https://www.immersivelimit.com/tutorials/create-coco-annotations-from-scratch
 
-
-Team Members
-------------------------
+## Team Members
 
 Neha Mittal, Vivek Chaudhary
-

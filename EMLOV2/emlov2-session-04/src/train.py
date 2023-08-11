@@ -38,7 +38,6 @@ import torch
 from omegaconf import DictConfig
 from pytorch_lightning import Callback, LightningDataModule, LightningModule, Trainer
 from pytorch_lightning.loggers import LightningLoggerBase
-
 from src import utils
 
 log = utils.get_pylogger(__name__)
@@ -76,9 +75,7 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
     logger: List[LightningLoggerBase] = utils.instantiate_loggers(cfg.get("logger"))
 
     log.info(f"Instantiating trainer <{cfg.trainer._target_}>")
-    trainer: Trainer = hydra.utils.instantiate(
-        cfg.trainer, callbacks=callbacks, logger=logger
-    )
+    trainer: Trainer = hydra.utils.instantiate(cfg.trainer, callbacks=callbacks, logger=logger)
 
     object_dict = {
         "cfg": cfg,
@@ -99,12 +96,8 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
 
     train_metrics = trainer.callback_metrics
     log.info("Tracing Model ...")
-    traced_model = model.to_torchscript(
-        method="trace", example_inputs=torch.randn(1, 32, 32, 3)
-    )
-    torch.jit.save(
-        traced_model, "%s/model.traced.pt" % cfg.callbacks.model_checkpoint.dirpath
-    )
+    traced_model = model.to_torchscript(method="trace", example_inputs=torch.randn(1, 32, 32, 3))
+    torch.jit.save(traced_model, "%s/model.traced.pt" % cfg.callbacks.model_checkpoint.dirpath)
     log.info("Saved traced model at %s.." % cfg.callbacks.model_checkpoint.dirpath)
 
     if cfg.get("test"):
@@ -126,7 +119,6 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
 
 @hydra.main(version_base="1.2", config_path=root / "configs", config_name="train.yaml")
 def main(cfg: DictConfig) -> Optional[float]:
-
     # train the model
     metric_dict, _ = train(cfg)
 

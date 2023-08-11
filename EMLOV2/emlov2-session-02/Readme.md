@@ -1,5 +1,5 @@
+# TOC
 
-# TOC 
 - [TOC](#toc)
 - [Assignment](#assignment)
 - [Cog: Containers for machine learning](#cog-containers-for-machine-learning)
@@ -14,30 +14,30 @@
   - [Assignment workflow](#assignment-workflow)
   - [Outputs](#outputs)
 
-  
 # Assignment
-
 
 1. [Use this template](https://github.com/ashleve/lightning-hydra-template)
 
 2. Add CIFAR10 datamodule (see how MNIST is integrated with the template, and similarly integrate CIFAR10)
+
 3. Refer to this if you need help with CIFAR10 training: https://colab.research.google.com/drive/(1dnc5jVmCLN1UsSL_p4X9UNgE77Y6UpoD?usp=sharing,Links)  (https://juliusruseckas.github.io/ml/lightning.html) (https://pytorch-lightning.readthedocs.io/en/stable/notebooks/lightning_examples/cifar10-baseline.html) see create_model call, and use timm pretrained model there (integrating timm is optional, but gives you bonus points)
- 
+
 4. It should include a Makefile for building the docker image, i.e. doing make build on terminal should build the docker image.
-5. Include scripts train.py and eval.py for training and eval(metrics) for the model, docker run <image>:<>tag python3 src/train.py experiment=experiment_name.yaml
-NOTE: To get the trained model checkpoint and all the logs on the host machine, you'll have to volume mount your lightning-hydra-template directory inside docker. The above command will change slightly for mounting volume.
-Include COG into this for inference only (image) (optional)
-inference of any pretrained timm model, or the model trained above on a given image.
-Push the changes in a repo and share link for it. NOTE: there are github actions included that will run automatically on push.
-We’ll continue building on top of this template, and adding more features in to it.
+
+5. Include scripts train.py and eval.py for training and eval(metrics) for the model, docker run <image>:\<>tag python3 src/train.py experiment=experiment_name.yaml
+   NOTE: To get the trained model checkpoint and all the logs on the host machine, you'll have to volume mount your lightning-hydra-template directory inside docker. The above command will change slightly for mounting volume.
+   Include COG into this for inference only (image) (optional)
+   inference of any pretrained timm model, or the model trained above on a given image.
+   Push the changes in a repo and share link for it. NOTE: there are github actions included that will run automatically on push.
+   We’ll continue building on top of this template, and adding more features in to it.
 
 # Cog: Containers for machine learning
 
 **What is Cog?**
 
-* *It is an open-source tool that lets you package machine learning models in a standard, production-ready container. You can deploy your packaged model to your own infrastructure.
+- \*It is an open-source tool that lets you package machine learning models in a standard, production-ready container. You can deploy your packaged model to your own infrastructure.
 
-* Cog is a tool in the Machine Learning Tools category of a tech stack.
+- Cog is a tool in the Machine Learning Tools category of a tech stack.
 
 **Cog Integrations**
 
@@ -50,16 +50,17 @@ We’ll continue building on top of this template, and adding more features in t
 
 **Cog's Features**
 
-* Docker containers without the pain
-* No more CUDA hell
-* Define the inputs and outputs for your model with  
-* standard Python
-* Automatic HTTP prediction server
-* Automatic queue worker
-* Cloud storage
-* Ready for production
+- Docker containers without the pain
+- No more CUDA hell
+- Define the inputs and outputs for your model with
+- standard Python
+- Automatic HTTP prediction server
+- Automatic queue worker
+- Cloud storage
+- Ready for production
 
 **Installation**
+
 ```
 sudo curl -o /usr/local/bin/cog -L https://github.com/replicate/cog/releases/latest/download/cog_`uname -s`_`uname -m`
 sudo chmod +x /usr/local/bin/cog
@@ -80,6 +81,7 @@ build:
     - click==8.1.3
 predict: "infer.py:Predictor"
 ```
+
 </details>
 
 <details>
@@ -104,7 +106,6 @@ class Predictor(BasePredictor):
         return postprocess(output)
 ```
 
-
 Now, you can run predictions on this model:
 
 ```
@@ -128,12 +129,15 @@ $ curl http://localhost:5000/predictions -X POST \
     -d '{"input": {"image": "https://.../input.jpg"}}'
 
 ```
+
 </details>
 
 <br>
 
 # Lightning-Hydra
+
 ## 📌  Introduction
+
 **Why you should use it:**
 
 - Convenient all-in-one technology stack for deep learning prototyping - allows you to rapidly iterate over new models, datasets and tasks on different hardware accelerators like CPUs, multi-GPUs or TPUs.
@@ -154,7 +158,6 @@ $ curl http://localhost:5000/predictions -X POST \
 [Hydra](https://github.com/facebookresearch/hydra) - a framework for elegantly configuring complex applications. The key feature is the ability to dynamically create a hierarchical configuration by composition and override it through config files and the command line.
 
 <br>
-
 
 <br>
 
@@ -559,6 +562,7 @@ ckpt_path: null
 # seed for random number generators in pytorch, numpy and python.random
 seed: null
 ```
+
 </details>
 
 <br>
@@ -598,52 +602,59 @@ model:
   optimizer:
     lr: 0.002
   model: "resnet18"
-  
+
 
 datamodule:
   batch_size: 64
-  ```
-  </details>
+```
 
-  <br>
+</details>
 
+<br>
 
 ## Assignment workflow
 
 1. You can see PyTorch Lightning module from below link. [models/mnist_module.py](src/models/cifar10_module.py). For config file refer this link [model/cifar10.yaml](configs/model/cifar10.yaml).
+
 2. You can see PyTorch Lightning datamodule from below link. [datamodules/cifar10_datamodule.py](src/datamodules/cifar10_datamodule.py). For config file refer this link [configs/datamodule/cifar10.yaml](configs/datamodule/cifar10.yaml)
+
 3. Run `make build` for building docker container.
+
 4. Run training with chosen experiment config:
+
    ```bash
    dcoker run emlov2:session-02 python3 src/train.py # will select main cofig file
    docker run emlov2:session-02 python3 src/train.py experiment=example_train.yaml # to run specific project
    ```
-   or simply execute to run experiment 
+
+   or simply execute to run experiment
+
    ```bash
    make train
    ```
 
 5. Run eval
-   
-    ```bash
-    docker run emlov2:session-02 python3 src/eval.py
-    ```
-    or simpy execute 
-    ```bash
-    make eval
-    ```
 
+   ```bash
+   docker run emlov2:session-02 python3 src/eval.py
+   ```
+
+   or simpy execute
+
+   ```bash
+   make eval
+   ```
 
 ## Outputs
 
 - Train
 
   ```bash
-  Epoch 0    ━━━━━━━━━━━━━━━━ 783/783 0:16:22 • 0:00:00 4.03it/s loss: 0.957      
-                                                                val/acc: 0.688   
-                                                                val/acc_best:    
-                                                                0.688 train/acc: 
-                                                                0.589            
+  Epoch 0    ━━━━━━━━━━━━━━━━ 783/783 0:16:22 • 0:00:00 4.03it/s loss: 0.957
+                                                                val/acc: 0.688
+                                                                val/acc_best:
+                                                                0.688 train/acc:
+                                                                0.589
   Starting testing!
   Files already downloaded and verified
   Files already downloaded and verified
@@ -653,7 +664,7 @@ datamodule:
   │         test/acc          │    0.6866000294685364     │
   │         test/loss         │    0.9233477711677551     │
   └───────────────────────────┴───────────────────────────┘
-  Testing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 157/157 0:00:06 • 0:00:00 24.83it/s 
+  Testing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 157/157 0:00:06 • 0:00:00 24.83it/s
 
   Best ckpt path: /code/checkpoints/epoch_000-v1.ckpt
   Closing loggers..
@@ -678,5 +689,4 @@ datamodule:
 
   <br>
 
-    
   ![meme](images/mr-bean-crown.gif)

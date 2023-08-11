@@ -6,7 +6,6 @@ defaults:
   - hydra: default.yaml
   - model: cifar10.yaml
 
-
 task_name: "demo_traced"
 
 # checkpoint is necessary for demo

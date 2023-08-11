@@ -1,11 +1,12 @@
 # Problem Statement
 
 Write a network architecture in such a way:
+
 - 99.4% validation accuracy
 - Less than 20k Parameters
-- You can use anything from above you want. 
+- You can use anything from above you want.
 - Less than 20 Epochs
-- Have used BN, Dropout, a Fully connected layer, have used GAP. 
+- Have used BN, Dropout, a Fully connected layer, have used GAP.
 
 **NOTE: We have achieved 99.40% Validation Accuracy at 12th Epoch and 99.50% at 20 Epoch**
 
@@ -22,43 +23,46 @@ Write a network architecture in such a way:
 
 ## Model Summary:
 
-          Layer (type)               Output Shape         Param #
-              Conv2d-1            [-1, 8, 28, 28]              72
-                ReLU-2            [-1, 8, 28, 28]               0
-         BatchNorm2d-3            [-1, 8, 28, 28]              16
-              Conv2d-4           [-1, 16, 28, 28]           1,152
-                ReLU-5           [-1, 16, 28, 28]               0
-         BatchNorm2d-6           [-1, 16, 28, 28]              32
-              Conv2d-7           [-1, 24, 28, 28]           3,456
-                ReLU-8           [-1, 24, 28, 28]               0
-         BatchNorm2d-9           [-1, 24, 28, 28]              48
-          MaxPool2d-10           [-1, 24, 14, 14]               0
-          Dropout2d-11           [-1, 24, 14, 14]               0
-             Conv2d-12            [-1, 8, 14, 14]             192
-               ReLU-13            [-1, 8, 14, 14]               0
-             Conv2d-14           [-1, 16, 12, 12]           1,152
-               ReLU-15           [-1, 16, 12, 12]               0
-        BatchNorm2d-16           [-1, 16, 12, 12]              32
-             Conv2d-17           [-1, 32, 10, 10]           4,608
-               ReLU-18           [-1, 32, 10, 10]               0
-        BatchNorm2d-19           [-1, 32, 10, 10]              64
-          Dropout2d-20           [-1, 32, 10, 10]               0
-             Conv2d-21            [-1, 8, 10, 10]             256
-               ReLU-22            [-1, 8, 10, 10]               0
-             Conv2d-23             [-1, 16, 8, 8]           1,152
-               ReLU-24             [-1, 16, 8, 8]               0
-        BatchNorm2d-25             [-1, 16, 8, 8]              32
-             Conv2d-26             [-1, 32, 6, 6]           4,608
-               ReLU-27             [-1, 32, 6, 6]               0
-        BatchNorm2d-28             [-1, 32, 6, 6]              64
-          Dropout2d-29             [-1, 32, 6, 6]               0
-          AvgPool2d-30             [-1, 32, 1, 1]               0
-             Linear-31                   [-1, 10]             330
-  ```
-  Total params: 17,266
-  Trainable params: 17,266
-  Non-trainable params: 0
-  ```
+```
+      Layer (type)               Output Shape         Param #
+          Conv2d-1            [-1, 8, 28, 28]              72
+            ReLU-2            [-1, 8, 28, 28]               0
+     BatchNorm2d-3            [-1, 8, 28, 28]              16
+          Conv2d-4           [-1, 16, 28, 28]           1,152
+            ReLU-5           [-1, 16, 28, 28]               0
+     BatchNorm2d-6           [-1, 16, 28, 28]              32
+          Conv2d-7           [-1, 24, 28, 28]           3,456
+            ReLU-8           [-1, 24, 28, 28]               0
+     BatchNorm2d-9           [-1, 24, 28, 28]              48
+      MaxPool2d-10           [-1, 24, 14, 14]               0
+      Dropout2d-11           [-1, 24, 14, 14]               0
+         Conv2d-12            [-1, 8, 14, 14]             192
+           ReLU-13            [-1, 8, 14, 14]               0
+         Conv2d-14           [-1, 16, 12, 12]           1,152
+           ReLU-15           [-1, 16, 12, 12]               0
+    BatchNorm2d-16           [-1, 16, 12, 12]              32
+         Conv2d-17           [-1, 32, 10, 10]           4,608
+           ReLU-18           [-1, 32, 10, 10]               0
+    BatchNorm2d-19           [-1, 32, 10, 10]              64
+      Dropout2d-20           [-1, 32, 10, 10]               0
+         Conv2d-21            [-1, 8, 10, 10]             256
+           ReLU-22            [-1, 8, 10, 10]               0
+         Conv2d-23             [-1, 16, 8, 8]           1,152
+           ReLU-24             [-1, 16, 8, 8]               0
+    BatchNorm2d-25             [-1, 16, 8, 8]              32
+         Conv2d-26             [-1, 32, 6, 6]           4,608
+           ReLU-27             [-1, 32, 6, 6]               0
+    BatchNorm2d-28             [-1, 32, 6, 6]              64
+      Dropout2d-29             [-1, 32, 6, 6]               0
+      AvgPool2d-30             [-1, 32, 1, 1]               0
+         Linear-31                   [-1, 10]             330
+```
+
+```
+Total params: 17,266
+Trainable params: 17,266
+Non-trainable params: 0
+```
 
 ## Learning Curve:
 
@@ -69,6 +73,7 @@ Write a network architecture in such a way:
 ![output11](https://user-images.githubusercontent.com/84603388/120034196-5274c880-c01a-11eb-99e6-a3ee5ea2e62d.png)
 
 ## Training logs:
+
 ```
   Epoch:1
   loss=0.0445 batch_id=468: 100%
@@ -141,5 +146,3 @@ Write a network architecture in such a way:
 
   Test set: Average loss: 0.0198, Accuracy: 9940/10000 (99.40%)
 ```
-
- 
