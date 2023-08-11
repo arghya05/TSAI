@@ -1,10 +1,10 @@
 from typing import Any, List
 
 import torch
+import torch.nn.functional as F
 from pytorch_lightning import LightningModule
 from torchmetrics import MaxMetric, MeanMetric
 from torchmetrics.classification.accuracy import Accuracy
-import torch.nn.functional as F
 from torchvision import transforms as T
 
 

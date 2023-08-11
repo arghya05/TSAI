@@ -1,13 +1,13 @@
 from typing import Any, List
 
 import torch
+from fairscale.nn import auto_wrap, checkpoint_wrapper, wrap
 from pytorch_lightning import LightningModule
 from torchmetrics import MaxMetric, MeanMetric
 from torchmetrics.classification.accuracy import Accuracy
-from fairscale.nn import checkpoint_wrapper, auto_wrap, wrap
+
 
 class TIMMLitModule(LightningModule):
-
     def __init__(
         self,
         net: torch.nn.Module,
@@ -36,10 +36,10 @@ class TIMMLitModule(LightningModule):
 
         # for tracking best so far validation accuracy
         self.val_acc_best = MaxMetric()
-    
+
     def configure_sharded_model(self):
         self.net = auto_wrap(self.net)
-        
+
     def forward(self, x: torch.Tensor):
         return self.net(x)
 
@@ -61,8 +61,22 @@ class TIMMLitModule(LightningModule):
         # update and log metrics
         self.train_loss(loss)
         self.train_acc(preds, targets)
-        self.log("train/loss", self.train_loss, on_step=False, on_epoch=True, prog_bar=True,sync_dist=True)
-        self.log("train/acc", self.train_acc, on_step=False, on_epoch=True, prog_bar=True, sync_dist=True)
+        self.log(
+            "train/loss",
+            self.train_loss,
+            on_step=False,
+            on_epoch=True,
+            prog_bar=True,
+            sync_dist=True,
+        )
+        self.log(
+            "train/acc",
+            self.train_acc,
+            on_step=False,
+            on_epoch=True,
+            prog_bar=True,
+            sync_dist=True,
+        )
 
         # we can return here dict with any tensors
         # and then read it in some callback or in `training_epoch_end()` below
@@ -79,8 +93,12 @@ class TIMMLitModule(LightningModule):
         # update and log metrics
         self.val_loss(loss)
         self.val_acc(preds, targets)
-        self.log("val/loss", self.val_loss, on_step=False, on_epoch=True, prog_bar=True, sync_dist=True)
-        self.log("val/acc", self.val_acc, on_step=False, on_epoch=True, prog_bar=True, sync_dist=True)
+        self.log(
+            "val/loss", self.val_loss, on_step=False, on_epoch=True, prog_bar=True, sync_dist=True
+        )
+        self.log(
+            "val/acc", self.val_acc, on_step=False, on_epoch=True, prog_bar=True, sync_dist=True
+        )
 
         return {"loss": loss, "preds": preds, "targets": targets}
 
@@ -97,8 +115,17 @@ class TIMMLitModule(LightningModule):
         # update and log metrics
         self.test_loss(loss)
         self.test_acc(preds, targets)
-        self.log("test/loss", self.test_loss, on_step=False, on_epoch=True, prog_bar=True, sync_dist=True)
-        self.log("test/acc", self.test_acc, on_step=False, on_epoch=True, prog_bar=True, sync_dist=True)
+        self.log(
+            "test/loss",
+            self.test_loss,
+            on_step=False,
+            on_epoch=True,
+            prog_bar=True,
+            sync_dist=True,
+        )
+        self.log(
+            "test/acc", self.test_acc, on_step=False, on_epoch=True, prog_bar=True, sync_dist=True
+        )
 
         return {"loss": loss, "preds": preds, "targets": targets}
 

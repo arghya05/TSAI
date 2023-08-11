@@ -1,19 +1,18 @@
-from typing import List
-import torch
-import numpy as np
-import cv2
 import random
+from typing import List
 
+import cv2
+import numpy as np
+import torch
 from pytorch_grad_cam.base_cam import BaseCAM
-from pytorch_grad_cam.utils.svd_on_activations import get_2d_projection
 from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
+from pytorch_grad_cam.utils.svd_on_activations import get_2d_projection
 
 
 def cells_to_bboxes(predictions, anchors, S, is_preds=True):
-    """
-    Scales the predictions coming from the model to
-    be relative to the entire image such that they for example later
-    can be plotted or.
+    """Scales the predictions coming from the model to be relative to the entire image such that
+    they for example later can be plotted or.
+
     INPUT:
     predictions: tensor of size (N, 3, S, S, num_classes+5)
     anchors: the anchors used for the predictions
@@ -37,17 +36,15 @@ def cells_to_bboxes(predictions, anchors, S, is_preds=True):
         best_class = predictions[..., 5:6]
 
     cell_indices = (
-        torch.arange(S)
-        .repeat(predictions.shape[0], 3, S, 1)
-        .unsqueeze(-1)
-        .to(predictions.device)
+        torch.arange(S).repeat(predictions.shape[0], 3, S, 1).unsqueeze(-1).to(predictions.device)
     )
     x = 1 / S * (box_predictions[..., 0:1] + cell_indices)
     y = 1 / S * (box_predictions[..., 1:2] + cell_indices.permute(0, 1, 3, 2, 4))
     w_h = 1 / S * box_predictions[..., 2:4]
-    converted_bboxes = torch.cat((best_class, scores, x, y, w_h), dim=-1).reshape(BATCH_SIZE, num_anchors * S * S, 6)
+    converted_bboxes = torch.cat((best_class, scores, x, y, w_h), dim=-1).reshape(
+        BATCH_SIZE, num_anchors * S * S, 6
+    )
     return converted_bboxes.tolist()
-
 
 
 def intersection_over_union(boxes_preds, boxes_labels, box_format="midpoint"):
@@ -98,6 +95,7 @@ def intersection_over_union(boxes_preds, boxes_labels, box_format="midpoint"):
 
     return intersection / (box1_area + box2_area - intersection + 1e-6)
 
+
 def non_max_suppression(bboxes, iou_threshold, threshold, box_format="corners"):
     """
     Video explanation of this function:
@@ -142,10 +140,8 @@ def non_max_suppression(bboxes, iou_threshold, threshold, box_format="corners"):
     return bboxes_after_nms
 
 
-
-
 def draw_predictions(image: np.ndarray, boxes: List[List], class_labels: List[str]) -> np.ndarray:
-    """Plots predicted bounding boxes on the image"""
+    """Plots predicted bounding boxes on the image."""
 
     colors = [[random.randint(0, 255) for _ in range(3)] for name in class_labels]
 
@@ -161,18 +157,15 @@ def draw_predictions(image: np.ndarray, boxes: List[List], class_labels: List[st
         box = box[2:]
         upper_left_x = box[0] - box[2] / 2
         upper_left_y = box[1] - box[3] / 2
-        
-        x1  = int(upper_left_x * width)
+
+        x1 = int(upper_left_x * width)
         y1 = int(upper_left_y * height)
-        
+
         x2 = x1 + int(box[2] * width)
         y2 = y1 + int(box[3] * height)
-        
+
         cv2.rectangle(
-            image,
-            (x1, y1), (x2, y2),
-            color=colors[int(class_pred)],
-            thickness=bbox_thick
+            image, (x1, y1), (x2, y2), color=colors[int(class_pred)], thickness=bbox_thick
         )
         text = f"{class_labels[int(class_pred)]}: {conf:.2f}"
         t_size = cv2.getTextSize(text, 0, 0.7, thickness=bbox_thick // 2)[0]
@@ -194,26 +187,23 @@ def draw_predictions(image: np.ndarray, boxes: List[List], class_labels: List[st
 
 
 class YoloCAM(BaseCAM):
-    def __init__(self, model, target_layers, use_cuda=False,
-                 reshape_transform=None):
-        super(YoloCAM, self).__init__(model,
-                                       target_layers,
-                                       use_cuda,
-                                       reshape_transform,
-                                       uses_gradients=False)
+    def __init__(self, model, target_layers, use_cuda=False, reshape_transform=None):
+        super().__init__(
+            model, target_layers, use_cuda, reshape_transform, uses_gradients=False
+        )
 
-    def forward(self,
-                input_tensor: torch.Tensor,
-                scaled_anchors: torch.Tensor,
-                targets: List[torch.nn.Module],
-                eigen_smooth: bool = False) -> np.ndarray:
-
+    def forward(
+        self,
+        input_tensor: torch.Tensor,
+        scaled_anchors: torch.Tensor,
+        targets: List[torch.nn.Module],
+        eigen_smooth: bool = False,
+    ) -> np.ndarray:
         if self.cuda:
             input_tensor = input_tensor.cuda()
 
         if self.compute_input_gradient:
-            input_tensor = torch.autograd.Variable(input_tensor,
-                                                   requires_grad=True)
+            input_tensor = torch.autograd.Variable(input_tensor, requires_grad=True)
 
         outputs = self.activations_and_grads(input_tensor)
         if targets is None:
@@ -221,24 +211,23 @@ class YoloCAM(BaseCAM):
             for i in range(3):
                 batch_size, A, S, _, _ = outputs[i].shape
                 anchor = scaled_anchors[i]
-                boxes_scale_i = cells_to_bboxes(
-                    outputs[i], anchor, S=S, is_preds=True
-                )
+                boxes_scale_i = cells_to_bboxes(outputs[i], anchor, S=S, is_preds=True)
                 for idx, (box) in enumerate(boxes_scale_i):
                     bboxes[idx] += box
-            
+
             nms_boxes = non_max_suppression(
-                bboxes[0], iou_threshold=0.5, threshold=0.4, box_format="midpoint",
+                bboxes[0],
+                iou_threshold=0.5,
+                threshold=0.4,
+                box_format="midpoint",
             )
             # target_categories = np.argmax(outputs.cpu().data.numpy(), axis=-1)
             target_categories = [box[0] for box in nms_boxes]
-            targets = [ClassifierOutputTarget(
-                category) for category in target_categories]
+            targets = [ClassifierOutputTarget(category) for category in target_categories]
 
         if self.uses_gradients:
             self.model.zero_grad()
-            loss = sum([target(output)
-                       for target, output in zip(targets, outputs)])
+            loss = sum([target(output) for target, output in zip(targets, outputs)])
             loss.backward(retain_graph=True)
 
         # In most of the saliency attribution papers, the saliency is
@@ -250,19 +239,10 @@ class YoloCAM(BaseCAM):
         # This gives you more flexibility in case you just want to
         # use all conv layers for example, all Batchnorm layers,
         # or something else.
-        cam_per_layer = self.compute_cam_per_layer(input_tensor,
-                                                   targets,
-                                                   eigen_smooth)
+        cam_per_layer = self.compute_cam_per_layer(input_tensor, targets, eigen_smooth)
         return self.aggregate_multi_layers(cam_per_layer)
-    
-    def get_cam_image(self,
-                      input_tensor,
-                      target_layer,
-                      target_category,
-                      activations,
-                      grads,
-                      eigen_smooth):
+
+    def get_cam_image(
+        self, input_tensor, target_layer, target_category, activations, grads, eigen_smooth
+    ):
         return get_2d_projection(activations)
-
-
-

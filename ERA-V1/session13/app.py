@@ -1,19 +1,18 @@
-import numpy as np
 import gradio as gr
-from detect import predict
-
+import numpy as np
 from config import PASCAL_CLASSES
+from detect import predict
 
 
 def inference(
     org_img: np.ndarray,
-    iou_thresh: float, thresh: float,
+    iou_thresh: float,
+    thresh: float,
     show_cam: str,
     transparency: float,
 ):
     outputs = predict(org_img, iou_thresh, thresh, show_cam, transparency)
     return outputs
-
 
 
 title = "YoloV3 from Scratch on Pascal VOC Dataset with GradCAM"
@@ -43,4 +42,3 @@ demo = gr.Interface(
     examples=examples,
 )
 demo.launch()
-

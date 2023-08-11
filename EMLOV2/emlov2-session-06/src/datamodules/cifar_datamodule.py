@@ -6,6 +6,7 @@ from torch.utils.data import ConcatDataset, DataLoader, Dataset, random_split
 from torchvision.datasets import CIFAR10
 from torchvision.transforms import transforms
 
+
 class CIFAR10DataModule(LightningDataModule):
     def __init__(
         self,
@@ -95,4 +96,3 @@ class CIFAR10DataModule(LightningDataModule):
     def load_state_dict(self, state_dict: Dict[str, Any]):
         """Things to do when loading checkpoint."""
         pass
-        
