@@ -1,4 +1,6 @@
 # Assignment 13 YoloV3 From Scratch on Pascal VOC
+#anand gupta
+#arghya Mukherjee
 
 <br>
 
